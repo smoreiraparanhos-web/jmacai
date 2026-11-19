@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Loja | JM Açaí — Açaí e Hambúrgueres em Eldorado do Sul</title>
+<meta name="description" content="Monte seu pedido na JM Açaí: açaí do seu jeito, sorvetes e hambúrgueres. Entrega e retirada em Eldorado do Sul.">
+<meta name="theme-color" content="#241038">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="JM Açaí">
+<meta property="og:title" content="Loja | JM Açaí">
+<meta property="og:description" content="Monte seu açaí, escolha seu burger e envie o pedido.">
+<meta property="og:image" content="assets/img/og.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/loja.css">
+
+<script>document.documentElement.classList.add('js')</script>
+<script src="js/config.js" defer></script>
+<script src="js/catalogo.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/loja.js" defer></script>
+</head>
+<body class="page-loja">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M5 7h14M10 7V5h4v2m-7 0 1 12h8l1-12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M4 20l1.2-4A8 8 0 1 1 8 18.8L4 20Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 9.5c.3 2.3 2.2 4.3 4.6 4.8l1-1.1 1.6.8c-.2 1-1 1.7-2 1.7A6 6 0 0 1 8 9.6c0-1 .7-1.8 1.7-2l.8 1.6-1.1 1Z" fill="currentColor"/></symbol>
+</svg>
+
+<a class="skip" href="#conteudo">Pular para o cardápio</a>
+
+<header class="header is-solid" data-header>
+  <div class="header__inner">
+    <a class="brand" href="index.html" aria-label="JM Açaí, página inicial">
+      <span class="brand__jm">JM</span><span class="brand__acai">açaí</span>
+    </a>
+
+    <nav class="nav" aria-label="Principal">
+      <ul class="nav__list" id="menu" data-menu>
+        <li><a href="index.html" class="nav__link">Início</a></li>
+        <li><a href="loja.html" class="nav__link is-active" aria-current="page">Loja</a></li>
+        <li><a href="index.html#a-jm" class="nav__link">A JM</a></li>
+      </ul>
+    </nav>
+
+    <button class="cart-btn" type="button" data-cart-open aria-label="Abrir sacola, 0 itens">
+      <svg class="ico" aria-hidden="true"><use href="#i-bag"/></svg>
+      <span class="cart-btn__label">Sacola</span>
+      <span class="cart-btn__count" data-cart-count>0</span>
+    </button>
+
+    <button class="burger-btn" type="button" aria-expanded="false" aria-controls="menu" data-menu-btn>
+      <span class="sr" data-menu-label>Abrir menu</span>
+      <span class="burger-btn__bars" aria-hidden="true"><i></i><i></i></span>
+    </button>
+  </div>
+</header>
+
+<main id="conteudo">
+  <section class="shop-hero" aria-labelledby="loja-title">
+    <div class="wrap shop-hero__inner">
+      <div>
+        <p class="eyebrow hero__eyebrow"><span class="dot" aria-hidden="true"></span>Loja JM Açaí</p>
+        <h1 class="shop-hero__title" id="loja-title">Monte seu <em>pedido.</em></h1>
+        <p class="shop-hero__sub">Escolha, personalize e envie. A loja confirma pelo WhatsApp.</p>
+        <p class="shop-hero__meta">
+          <span class="status" data-status><span class="status__dot"></span><span data-status-text>Todos os dias, 13h30–23h30</span></span>
+        </p>
+      </div>
+    </div>
+    <svg class="drip drip--shop" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <path fill="#241038" d="M0 0H1440V40C1400 40 1392 70 1372 70 1352 70 1352 40 1300 40H1120C1096 40 1094 96 1068 96 1042 96 1046 40 1010 40H780C752 40 750 62 732 62 714 62 712 40 690 40H470C440 40 440 108 410 108 380 108 384 40 352 40H200C176 40 176 74 156 74 136 74 138 40 112 40H0Z"/>
+    </svg>
+  </section>
+
+  <div class="wrap">
+    <div class="demo-note" data-demo-note hidden role="note">
+      <strong>Loja em fase de testes.</strong>
+      Produtos e preços seguem o cardápio oficial, mas o envio de pedidos por aqui ainda não está ativo.
+      Para pedir agora, use o <a data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">cardápio oficial no Anota.ai</a>.
+    </div>
+  </div>
+
+  <nav class="cats" aria-label="Categorias do cardápio" data-cats>
+    <div class="wrap cats__inner" data-cats-list></div>
+  </nav>
+
+  <div class="wrap shop" data-shop>
+    <noscript><p class="shop__noscript">A loja precisa de JavaScript. Você também pode pedir pelo <a href="https://pedido.anota.ai/loja/jm-acai">cardápio oficial no Anota.ai</a>.</p></noscript>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div class="footer__brand">
+      <a class="brand brand--lg" href="index.html" aria-label="JM Açaí, página inicial">
+        <span class="brand__jm">JM</span><span class="brand__acai">açaí</span>
+      </a>
+      <p>Açaí, sorvetes e hambúrgueres em Eldorado do Sul.</p>
+    </div>
+    <div class="footer__col">
+      <h2 class="footer__h">Visite</h2>
+      <p><span data-jm="rua">Rua Argentina, 196</span><br><span data-jm="cidade">Eldorado do Sul — RS</span></p>
+      <p data-jm="horario">Todos os dias, das 13h30 às 23h30</p>
+    </div>
+    <div class="footer__col">
+      <h2 class="footer__h">Fale com a gente</h2>
+      <p><a data-link="tel" href="tel:+555198914468"><span data-jm="telefone">(51) 9891-4468</span></a></p>
+      <p><a data-link="instagram" href="https://www.instagram.com/jmacaieldoradodosul/" target="_blank" rel="noopener">Instagram</a></p>
+    </div>
+  </div>
+  <div class="wrap footer__bottom">
+    <p>© <span data-year>2026</span> JM Açaí. Todos os direitos reservados.</p>
+    <p class="footer__credits">Imagens ilustrativas. Foto do hambúrguer: Renee Comet / National Cancer Institute (domínio público).</p>
+  </div>
+</footer>
+
+<!-- Barra da sacola (mobile) -->
+<button class="cartbar" type="button" data-cart-open data-cartbar hidden>
+  <span class="cartbar__count" data-cart-count>0</span>
+  <span class="cartbar__label">Ver sacola</span>
+  <span class="cartbar__total" data-cart-total>R$ 0,00</span>
+</button>
+
+<!-- Produto -->
+<dialog class="sheet sheet--product" id="produto" aria-labelledby="produto-nome" data-product-dialog>
+  <form method="dialog" class="sheet__form" data-product-form novalidate>
+    <button class="sheet__close" type="button" data-close aria-label="Fechar"><svg class="ico"><use href="#i-close"/></svg></button>
+    <div class="pd__media"><img src="" alt="" data-pd-img width="600" height="600"></div>
+    <div class="pd__body">
+      <p class="pd__tag" data-pd-tag hidden></p>
+      <h2 class="pd__name" id="produto-nome" data-pd-name></h2>
+      <p class="pd__desc" data-pd-desc></p>
+      <div data-pd-groups></div>
+      <label class="field">
+        <span class="field__label" data-pd-obs-label>Alguma observação?</span>
+        <textarea name="obs" rows="2" maxlength="140" placeholder="Ex.: sem cebola, calda à parte" data-pd-obs></textarea>
+      </label>
+    </div>
+    <div class="pd__footer">
+      <div class="stepper" aria-label="Quantidade">
+        <button type="button" data-qty="-1" aria-label="Diminuir quantidade"><svg class="ico"><use href="#i-minus"/></svg></button>
+        <output data-pd-qty aria-live="polite">1</output>
+        <button type="button" data-qty="1" aria-label="Aumentar quantidade"><svg class="ico"><use href="#i-plus"/></svg></button>
+      </div>
+      <button class="btn btn--yellow pd__add" type="submit" data-pd-add>
+        <span data-pd-add-label>Adicionar</span><span class="pd__add-price" data-pd-price>R$ 0,00</span>
+      </button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Sacola / checkout -->
+<dialog class="sheet sheet--cart" id="sacola" aria-labelledby="sacola-titulo" data-cart-dialog>
+  <div class="cart">
+    <div class="cart__head">
+      <button class="cart__back" type="button" data-step-back hidden aria-label="Voltar"><svg class="ico"><use href="#i-back"/></svg></button>
+      <h2 class="cart__title" id="sacola-titulo" data-cart-title>Sua sacola</h2>
+      <button class="sheet__close sheet__close--static" type="button" data-close aria-label="Fechar"><svg class="ico"><use href="#i-close"/></svg></button>
+    </div>
+    <ol class="cart__steps" aria-label="Etapas do pedido">
+      <li data-step-dot="1" class="is-current">Sacola</li>
+      <li data-step-dot="2">Dados</li>
+      <li data-step-dot="3">Revisão</li>
+    </ol>
+
+    <!-- 1. Itens -->
+    <section class="cart__step" data-step="1">
+      <ul class="cart__items" data-cart-items></ul>
+      <div class="cart__empty" data-cart-empty>
+        <img src="assets/img/acai-bowl.svg" alt="" width="120" height="120">
+        <p>Sua sacola está vazia.</p>
+        <button class="btn btn--purple" type="button" data-close>Ver cardápio</button>
+      </div>
+    </section>
+
+    <!-- 2. Dados -->
+    <section class="cart__step" data-step="2" hidden>
+      <form class="checkout" data-checkout novalidate>
+        <fieldset class="field">
+          <legend class="field__label">Como você quer receber?</legend>
+          <div class="seg" data-modalidades></div>
+        </fieldset>
+        <label class="field">
+          <span class="field__label">Seu nome</span>
+          <input name="nome" autocomplete="name" required maxlength="60">
+        </label>
+        <label class="field">
+          <span class="field__label">WhatsApp ou telefone</span>
+          <input name="telefone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(51) 99999-9999" maxlength="20">
+        </label>
+        <div class="checkout__address" data-address>
+          <label class="field">
+            <span class="field__label">Rua e número</span>
+            <input name="rua" autocomplete="address-line1" required maxlength="90">
+          </label>
+          <div class="field-row">
+            <label class="field">
+              <span class="field__label">Bairro</span>
+              <input name="bairro" autocomplete="address-level3" required maxlength="50">
+            </label>
+            <label class="field">
+              <span class="field__label">Complemento <small>(opcional)</small></span>
+              <input name="complemento" autocomplete="address-line2" maxlength="50">
+            </label>
+          </div>
+          <label class="field">
+            <span class="field__label">Ponto de referência <small>(opcional)</small></span>
+            <input name="referencia" maxlength="80">
+          </label>
+        </div>
+        <fieldset class="field">
+          <legend class="field__label">Pagamento</legend>
+          <div class="seg seg--wrap" data-pagamentos></div>
+          <p class="field__hint">O pagamento é feito na entrega ou na retirada.</p>
+        </fieldset>
+        <label class="field" data-troco hidden>
+          <span class="field__label">Troco para quanto? <small>(opcional)</small></span>
+          <input name="troco" inputmode="decimal" placeholder="Ex.: 50" maxlength="10">
+        </label>
+      </form>
+    </section>
+
+    <!-- 3. Revisão -->
+    <section class="cart__step" data-step="3" hidden>
+      <div class="review" data-review></div>
+    </section>
+
+    <div class="cart__foot" data-cart-foot>
+      <dl class="totals" data-totals></dl>
+      <p class="cart__alert" data-cart-alert role="alert" hidden></p>
+      <button class="btn btn--yellow btn--lg btn--block" type="button" data-step-next>Continuar</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" data-toast role="status" aria-live="polite"></div>
+
+</body>
+</html>
