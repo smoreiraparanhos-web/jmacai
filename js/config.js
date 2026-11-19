@@ -33,6 +33,34 @@ window.JM = {
   atendimento: 'Delivery e presencial',
 
   /*
+   * LOJA (loja.html) — pedidos montados no site e enviados para o WhatsApp da loja.
+   * O cardápio fica em js/catalogo.js.
+   */
+  loja: {
+    // false = a loja funciona (cardápio, sacola, checkout), mas NÃO envia pedidos.
+    // Coloque true depois de confirmar o número do WhatsApp abaixo.
+    // Com true, os botões "pedir" da página inicial também passam a levar para a loja.
+    envioAtivo: false,
+
+    // CONFIRMAR: número do WhatsApp que recebe pedidos (DDI + DDD + número, só dígitos).
+    whatsapp: '555198914468',
+
+    // CONFIRMAR com a loja quais modalidades e formas de pagamento valem.
+    modalidades: [
+      { id: 'entrega', nome: 'Entrega' },
+      { id: 'retirada', nome: 'Retirada na loja' }
+    ],
+    pagamentos: ['PIX', 'Cartão na entrega', 'Dinheiro'],
+
+    // Taxa de entrega em centavos (ex.: 500 = R$ 5,00). null = a loja informa pelo WhatsApp.
+    taxaEntrega: null,
+    // Pedido mínimo em centavos (cardápio oficial: R$ 10,00). 0 = sem mínimo.
+    pedidoMinimo: 1000,
+    // false = fora do horário a sacola funciona, mas o envio fica bloqueado.
+    aceitarForaDoHorario: false
+  },
+
+  /*
    * Seção "Encontre seu próximo favorito".
    * Hoje são sugestões por momento (sem preço, sem produto inventado).
    * Quando houver produtos reais, troque os textos e preencha "preco" (ex.: 'R$ 19,90');

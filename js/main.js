@@ -8,6 +8,9 @@
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- 1. Dados do config.js ---------- */
+  // Com o envio da loja ativo, os botões de pedido da home levam à loja.
+  var lojaAtiva = !!(C.loja && C.loja.envioAtivo === true);
+  var naLoja = document.body.classList.contains('page-loja');
   var links = {
     pedido: C.pedidoUrl,
     instagram: C.instagramUrl,
@@ -15,7 +18,14 @@
     tel: C.telefoneLink
   };
   $$('[data-link]').forEach(function (a) {
-    var url = links[a.getAttribute('data-link')];
+    var tipo = a.getAttribute('data-link');
+    if (tipo === 'pedido' && lojaAtiva && !naLoja) {
+      a.setAttribute('href', 'loja.html');
+      a.removeAttribute('target');
+      $$('.sr', a).forEach(function (s) { s.remove(); });
+      return;
+    }
+    var url = links[tipo];
     if (url) a.setAttribute('href', url);
   });
 
@@ -89,7 +99,7 @@
     menuBtn.setAttribute('aria-expanded', String(open));
     menuLabel.textContent = open ? 'Fechar menu' : 'Abrir menu';
     document.body.classList.toggle('menu-open', open);
-    header.classList.toggle('is-solid', open || window.scrollY > 24);
+    header.classList.toggle('is-solid', open || naLoja || window.scrollY > 24);
     if (open) { var first = $('a', menu); if (first) setTimeout(function () { first.focus(); }, 200); }
   }
   menuBtn.addEventListener('click', function () { setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'); });
@@ -101,7 +111,7 @@
 
   /* Link ativo conforme a seção visível */
   var navLinks = $$('.nav__link');
-  var secoes = navLinks.map(function (a) { return $(a.getAttribute('href')); }).filter(Boolean);
+  var secoes = navLinks.map(function (a) { var h = a.getAttribute('href'); return h.charAt(0) === '#' ? $(h) : null; }).filter(Boolean);
   if ('IntersectionObserver' in window) {
     var navIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
@@ -156,7 +166,7 @@
 
   function onScroll() {
     var y = window.scrollY;
-    if (!menu.classList.contains('is-open')) header.classList.toggle('is-solid', y > 24);
+    if (!menu.classList.contains('is-open')) header.classList.toggle('is-solid', naLoja || y > 24);
     if (!reduceMotion && burgersSec) {
       var r = burgersSec.getBoundingClientRect();
       var vh = window.innerHeight;
