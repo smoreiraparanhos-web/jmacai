@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 800" role="img" aria-label="Ilustração de garrafa de refrigerante">
+<defs>
+<linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#1B0B2C"/><stop offset=".35" stop-color="#4A2A6E"/><stop offset=".6" stop-color="#2A1340"/><stop offset="1" stop-color="#12061E"/></linearGradient>
+<linearGradient id="cap" x1="0" x2="1"><stop offset="0" stop-color="#C9A900"/><stop offset=".4" stop-color="#FFE94D"/><stop offset="1" stop-color="#B89A00"/></linearGradient>
+</defs>
+<rect x="118" y="20" width="64" height="44" rx="8" fill="url(#cap)"/>
+<path d="M124 64 h52 v40 C176 150 236 200 236 280 V700 C236 750 210 776 150 776 C90 776 64 750 64 700 V280 C64 200 124 150 124 104Z" fill="url(#g)"/>
+<path d="M64 360 H236 V520 H64Z" fill="#F8D900"/>
+<text x="150" y="462" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="74" fill="#241038" letter-spacing="-4">JM</text>
+<path d="M64 520 Q150 548 236 520 V540 Q150 568 64 540Z" fill="#D7A8FF"/>
+<path d="M92 260 V690" stroke="#fff" stroke-width="14" stroke-linecap="round" opacity=".28"/>
+<g fill="#fff" opacity=".7"><circle cx="200" cy="300" r="5"/><circle cx="190" cy="610" r="4"/><circle cx="110" cy="640" r="3"/><circle cx="206" cy="660" r="3"/></g>
+</svg>
