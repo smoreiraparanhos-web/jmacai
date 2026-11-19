@@ -2,7 +2,7 @@
 
 Site da JM Açaí (Eldorado do Sul, RS). HTML, CSS e JavaScript puros, sem build e sem dependências.
 
-- **`index.html`:** vitrine da marca (açaí, hambúrgueres, combinações, localização).
+- **`index.html`:** site da marca. Carrossel de campanhas, açaí com tabela de tamanhos, hambúrgueres, bebidas, combos, o espaço da loja e como chegar.
 - **`loja.html`:** loja online. Cardápio, personalização, sacola e checkout. O pedido é enviado pronto para o WhatsApp da loja.
 
 Escopo completo do e-commerce, com fases seguintes e o que falta para ativar: [`docs/ESCOPO-ECOMMERCE.md`](docs/ESCOPO-ECOMMERCE.md).
@@ -30,14 +30,14 @@ jmacai/
 ├── docs/ESCOPO-ECOMMERCE.md
 └── assets/
     ├── favicon.svg
-    └── img/            acai-bowl.svg, trufado-frutas.svg, bebida.svg, burger.webp, og.jpg
+    └── img/            acai-bowl.svg, trufado-frutas.svg, bebida.svg, garrafa.svg, espaco.svg, burger.webp, og.jpg
 ```
 
 ## O que editar
 
 **`js/config.js`:** link do Anota.ai, Instagram, telefone, endereço e horário (usado no selo "Aberto agora" e no bloqueio de pedidos fora do horário). No bloco `loja` ficam o WhatsApp que recebe pedidos, as modalidades, as formas de pagamento, a taxa de entrega e o pedido mínimo.
 
-**`js/catalogo.js`:** produtos e preços em centavos. Cada produto pode ter grupos de opções (tamanho, cremes, adicionais), com mínimo, máximo e preço extra. O formato está explicado no topo do arquivo.
+**`js/catalogo.js`:** produtos e preços em centavos. Os preços da página inicial (anúncios, tabelas, combos, bebidas) também são lidos daqui: mudou no catálogo, muda no site inteiro. Cada produto pode ter grupos de opções (tamanho, cremes, adicionais), com mínimo, máximo e preço extra. O formato está explicado no topo do arquivo.
 
 ### Ativar o envio de pedidos
 
@@ -66,12 +66,13 @@ O HTML da vitrine também traz os dados da loja escritos no código, para SEO. S
 
 - **Produtos da loja:** troque o campo `imagem` de cada produto em `js/catalogo.js`. Funciona melhor com fotos quadradas de fundo transparente (PNG ou WebP, ~600×600).
 - **Vitrine:** substitua `assets/img/acai-bowl.svg` e `assets/img/burger.webp` (fundo transparente) e atualize os `src` no `index.html`.
+- **O espaço:** troque `assets/img/espaco.svg` por uma foto do salão (horizontal, 3:2, ~1800 px) e remova a legenda "Ilustração" da seção.
 - Depois de trocar as fotos, remova as etiquetas "Imagens ilustrativas" e "Foto ilustrativa" e o crédito no rodapé.
 
 ## Créditos
 
 - Foto do hambúrguer: Renee Comet, National Cancer Institute. Domínio público ([Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Cheeseburger.jpg)). Recortada para fundo transparente.
-- Ilustrações de açaí, trufado de frutas e bebida: criadas para este projeto.
+- Ilustrações de açaí, trufado de frutas, bebidas e do salão: criadas para este projeto.
 - Fontes: Bricolage Grotesque e Instrument Serif (Google Fonts, licença OFL).
 
 ## Acessibilidade e desempenho

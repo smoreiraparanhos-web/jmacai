@@ -644,12 +644,12 @@ body.menu-open { overflow: hidden; }
 
   .acai__grid {
     grid-template-columns: 1fr 1fr; column-gap: 72px; row-gap: 40px;
-    grid-template-areas: "head figure" "steps figure" "cta figure";
-    align-items: start;
+    grid-template-areas: "head figure" "sizes sizes" "cta cta";
+    align-items: center;
   }
   .acai__head { grid-area: head; }
   .acai__figure { grid-area: figure; align-self: center; }
-  .steps { grid-area: steps; }
+  .sizes { grid-area: sizes; }
   .acai__cta { grid-area: cta; }
 
   .burgers__grid { grid-template-columns: 1.1fr 1fr; align-items: center; gap: 56px; }
@@ -667,10 +667,288 @@ body.menu-open { overflow: hidden; }
 }
 
 /* ==========================================================
+   CAMPANHAS (carrossel de anúncios)
+   ========================================================== */
+.promo { position: relative; background: var(--creme); padding-bottom: 8px; }
+.promo__track {
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  scrollbar-width: none; overscroll-behavior-x: contain;
+}
+.promo__track::-webkit-scrollbar { display: none; }
+.promo__track:focus-visible { outline: 3px solid var(--roxo-700); outline-offset: -3px; }
+
+.ad {
+  --pad: max(var(--gutter), calc((100% - var(--wrap)) / 2 + var(--gutter)));
+  flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always;
+  position: relative; overflow: hidden; isolation: isolate;
+  display: grid; grid-template-rows: auto 1fr; align-items: center; gap: 12px;
+  min-height: clamp(600px, 86svh, 780px);
+  padding: 56px var(--pad) 44px;
+  background: var(--roxo-800); color: var(--creme);
+}
+.ad::before { /* grande círculo decorativo */
+  content: ""; position: absolute; z-index: -1; width: 120vmin; aspect-ratio: 1; border-radius: 50%;
+  right: -40vmin; bottom: -50vmin; background: radial-gradient(circle, var(--roxo-500), transparent 68%); opacity: .7;
+}
+.ad__kicker { font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--lilas); }
+.ad__title {
+  margin-top: 14px; font-size: clamp(3.4rem, 15vw, 8.6rem); line-height: .86; letter-spacing: -.055em;
+  font-weight: 800; font-variation-settings: "wdth" 80; text-transform: uppercase;
+}
+.ad__title em { font-family: var(--f-serif); font-style: italic; font-weight: 400; text-transform: none; letter-spacing: -.02em; color: var(--amarelo); }
+.ad__price { margin: 20px 0 24px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+.ad__price small { font-size: .95rem; font-weight: 600; opacity: .8; }
+.ad__price strong {
+  font-size: clamp(2.4rem, 9vw, 4.4rem); font-weight: 800; letter-spacing: -.04em; line-height: 1; color: var(--amarelo);
+}
+.ad__price--list { gap: 4px 28px; }
+.ad__price--list span { display: grid; font-weight: 700; }
+.ad__price--list strong { font-size: clamp(2rem, 7vw, 3.4rem); }
+.ad__art { position: relative; height: 100%; min-height: 250px; }
+.ad__img { position: absolute; filter: drop-shadow(0 30px 34px rgba(0, 0, 0, .45)); }
+.ad__note { position: absolute; right: var(--pad); bottom: 14px; font-size: .64rem; letter-spacing: .08em; text-transform: uppercase; opacity: .55; }
+
+.ad__sticker {
+  position: absolute; display: grid; place-items: center; text-align: center; border-radius: 50%;
+  background: var(--amarelo); color: var(--roxo-800); font-weight: 800; line-height: 1.05;
+  box-shadow: 0 16px 30px -12px rgba(0, 0, 0, .5);
+}
+.ad__sticker--sizes { width: 110px; height: 110px; right: 4%; top: 0; grid-template-columns: 1fr 1fr; padding: 22px; gap: 0 4px; font-size: .95rem; animation: wobble 6s ease-in-out infinite; }
+.ad__sticker--sizes small { grid-column: 1 / -1; font-size: .75rem; }
+.ad__sticker--round { width: 104px; height: 104px; left: 2%; top: 4%; font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; animation: wobble 7s ease-in-out infinite; }
+.ad__sticker--round b { font-size: 1.5rem; letter-spacing: -.02em; }
+@keyframes wobble { 50% { transform: rotate(10deg) scale(1.04); } }
+
+/* variações */
+.ad--acai { background: linear-gradient(160deg, var(--creme) 30%, var(--lilas-100)); color: var(--roxo-800); }
+.ad--acai::before { background: radial-gradient(circle, var(--lilas), transparent 66%); opacity: .8; }
+.ad--acai .ad__kicker { color: var(--roxo-700); }
+.ad--acai .ad__title em, .ad--acai .ad__price strong { color: var(--roxo-700); }
+.ad--acai .ad__img--bowl { width: min(88%, 520px); left: 50%; top: 50%; translate: -50% -50%; animation: spin 70s linear infinite; }
+.ad--burger { background: #120818; }
+.ad--burger::before { background: radial-gradient(circle, rgba(248, 217, 0, .45), transparent 65%); }
+.ad--burger .ad__img--burger { width: min(96%, 620px); left: 50%; top: 52%; translate: -50% -50%; rotate: -6deg; }
+.ad--combo { background: var(--amarelo); color: var(--roxo-800); }
+.ad--combo::before { background: radial-gradient(circle, #FFF27A, transparent 65%); opacity: 1; }
+.ad--combo .ad__kicker { color: var(--roxo-700); }
+.ad--combo .ad__title em, .ad--combo .ad__price strong { color: var(--roxo-700); }
+.ad--combo .ad__img { filter: drop-shadow(0 24px 26px rgba(36, 16, 56, .35)); }
+.ad__img--t1 { width: 54%; left: 2%; top: 4%; }
+.ad__img--t2 { width: 62%; right: 0; bottom: 4%; z-index: 2; }
+.ad__img--t3 { width: 34%; right: 8%; top: 0; rotate: 12deg; }
+.ad--drink { background: var(--lilas); color: var(--roxo-800); }
+.ad--drink::before { background: radial-gradient(circle, #F1E4FF, transparent 65%); opacity: 1; }
+.ad--drink .ad__kicker { color: var(--roxo-700); }
+.ad--drink .ad__title em, .ad--drink .ad__price strong { color: var(--roxo-700); }
+.ad__img--bottle { height: 100%; max-height: 420px; left: 30%; top: 50%; translate: -50% -50%; rotate: -8deg; }
+.ad__img--can { width: 42%; max-width: 260px; left: 56%; top: 54%; translate: 0 -50%; rotate: 10deg; }
+.bubble {
+  position: absolute; left: var(--x); bottom: 0; width: var(--s); height: var(--s); border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, .8); animation: bubble 5s ease-in var(--d) infinite; opacity: 0;
+}
+@keyframes bubble { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 100% { transform: translateY(-320px); opacity: 0; } }
+
+/* entrada do slide ativo */
+.ad .ad__copy > * { transition: opacity .7s var(--ease), transform .8s var(--ease); }
+.js .ad:not(.is-active) .ad__copy > * { opacity: 0; transform: translateY(24px); }
+.ad.is-active .ad__copy > :nth-child(2) { transition-delay: .06s; }
+.ad.is-active .ad__copy > :nth-child(3) { transition-delay: .14s; }
+.ad.is-active .ad__copy > :nth-child(4) { transition-delay: .22s; }
+.ad .ad__art { transition: transform 1s var(--ease-spring), opacity .8s; }
+.js .ad:not(.is-active) .ad__art { opacity: 0; transform: scale(.88) rotate(-4deg); }
+
+.promo__controls { display: flex; align-items: center; justify-content: center; gap: 8px; padding-block: 16px 8px; }
+.promo__btn {
+  width: 48px; height: 48px; border-radius: 50%; border: 2px solid rgba(36, 16, 56, .16); background: var(--branco);
+  display: grid; place-items: center; cursor: pointer; color: var(--roxo-800); transition: background-color .2s, transform .3s var(--ease-spring);
+}
+.promo__btn:hover { background: var(--lilas-100); transform: scale(1.06); }
+.promo__btn .ico { width: 20px; height: 20px; }
+.promo__btn .ico-play { display: none; }
+.promo__btn[aria-pressed="true"] .ico-play { display: block; }
+.promo__btn[aria-pressed="true"] .ico-pause { display: none; }
+.promo__dots { display: flex; gap: 2px; margin-inline: 6px; }
+.promo__dot { width: 32px; height: 44px; border: 0; background: none; cursor: pointer; display: grid; place-items: center; padding: 0; }
+.promo__dot::before {
+  content: ""; width: 10px; height: 10px; border-radius: 99px; background: rgba(36, 16, 56, .25);
+  transition: width .4s var(--ease), background-color .3s;
+}
+.promo__dot[aria-current="true"]::before { width: 26px; background: var(--roxo-800); }
+
+/* ==========================================================
+   AÇAÍ — tamanhos e preços
+   ========================================================== */
+.sizes { display: grid; gap: 14px; }
+.size-card {
+  position: relative; padding: 26px 24px 20px; border-radius: 26px; background: var(--branco);
+  border: 1.5px solid rgba(72, 33, 107, .12); box-shadow: 0 24px 40px -30px rgba(36, 16, 56, .5);
+  transition: transform .5s var(--ease-spring), box-shadow .4s;
+}
+.size-card:hover { transform: translateY(-6px) rotate(-.5deg); box-shadow: 0 34px 50px -30px rgba(36, 16, 56, .6); }
+.size-card__tag { display: inline-block; font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; background: var(--amarelo); color: var(--roxo-800); padding: 4px 10px; border-radius: 999px; }
+.size-card h3 { margin-top: 14px; font-size: 1.7rem; letter-spacing: -.04em; font-weight: 800; color: var(--roxo-800); line-height: 1; }
+.size-card > p:not(.size-card__tag) { margin-top: 6px; color: var(--tinta-2); font-size: .95rem; }
+.size-list { margin-top: 16px; }
+.size-list li { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; padding: 11px 0; border-top: 1px dashed rgba(72, 33, 107, .22); }
+.size-list span { font-weight: 650; }
+.size-list small { font-weight: 600; color: var(--tinta-2); font-size: .8rem; margin-left: 4px; }
+.size-list b { font-size: 1.15rem; font-weight: 800; color: var(--roxo-800); }
+.size-card--dark { background: var(--roxo-800); color: var(--creme); border-color: transparent; }
+.size-card--dark h3, .size-card--dark .size-list b { color: var(--amarelo); }
+.size-card--dark > p:not(.size-card__tag), .size-card--dark .size-list small { color: #CDBBDD; }
+.size-card--dark .size-list li { border-color: rgba(215, 168, 255, .25); }
+.size-card--fruit { background: var(--lilas-100); }
+
+/* ==========================================================
+   BURGERS — quadro de menu
+   ========================================================== */
+.board { margin-top: 30px; }
+.board li { padding: 14px 0; border-bottom: 1px solid rgba(215, 168, 255, .14); }
+.board li:first-child { border-top: 1px solid rgba(215, 168, 255, .14); }
+.board__row { display: flex; align-items: baseline; gap: 10px; }
+.board__name { font-size: clamp(1.1rem, 3.6vw, 1.3rem); font-weight: 750; letter-spacing: -.02em; }
+.board__row i { flex: 1; min-width: 20px; border-bottom: 2px dotted rgba(215, 168, 255, .35); translate: 0 -5px; }
+.board__row b { font-size: 1.15rem; font-weight: 800; color: var(--amarelo); white-space: nowrap; }
+.board small { display: block; margin-top: 2px; color: #BFA9D3; font-size: .9rem; }
+.burgers__badge {
+  position: absolute; left: 4%; top: 6%; z-index: 2; width: 116px; height: 116px; border-radius: 50%;
+  display: grid; place-content: center; text-align: center; background: var(--amarelo); color: var(--roxo-800);
+  box-shadow: 0 18px 30px -12px rgba(0, 0, 0, .6); animation: wobble 7s ease-in-out infinite;
+}
+.burgers__badge small { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+.burgers__badge b { font-size: 1.4rem; font-weight: 800; letter-spacing: -.03em; }
+
+/* ==========================================================
+   BEBIDAS
+   ========================================================== */
+.drinks { position: relative; overflow: hidden; background: var(--amarelo); color: var(--roxo-800); padding: clamp(80px, 12vw, 150px) 0; }
+.drinks::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(40% 50% at 20% 40%, rgba(255, 255, 255, .45), transparent 70%),
+    repeating-linear-gradient(-45deg, transparent 0 22px, rgba(36, 16, 56, .035) 22px 24px);
+}
+.drinks__grid { position: relative; display: grid; gap: 44px; }
+.drinks__art { position: relative; width: min(100%, 460px); aspect-ratio: 1; margin-inline: auto; }
+.drinks__circle { position: absolute; inset: 8%; border-radius: 50%; background: var(--roxo-800); box-shadow: inset 0 -30px 60px rgba(0, 0, 0, .3); }
+.drinks__bottle { position: absolute; height: 92%; left: 50%; top: 2%; translate: -50% 0; filter: drop-shadow(0 26px 30px rgba(0, 0, 0, .45)); animation: bob 7s ease-in-out infinite; }
+.drinks__can { position: absolute; width: 40%; filter: drop-shadow(0 22px 24px rgba(0, 0, 0, .4)); }
+.drinks__can--a { left: -2%; bottom: 4%; rotate: -14deg; animation: bob 6s ease-in-out -2s infinite; }
+.drinks__can--b { right: -2%; bottom: 10%; rotate: 12deg; animation: bob 8s ease-in-out -4s infinite; }
+.ice { position: absolute; width: 13%; aspect-ratio: 1; border-radius: 18%; background: linear-gradient(135deg, rgba(255, 255, 255, .95), rgba(200, 230, 255, .6)); box-shadow: inset -4px -4px 8px rgba(120, 170, 220, .4); }
+.i1 { left: 8%; top: 10%; rotate: 20deg; animation: float 7s ease-in-out infinite; }
+.i2 { right: 6%; top: 18%; rotate: -12deg; width: 10%; animation: float 9s ease-in-out -2s infinite; }
+.i3 { right: 30%; bottom: -2%; rotate: 40deg; width: 9%; animation: float 8s ease-in-out -4s infinite; }
+.drinks__tag { position: absolute; left: 0; bottom: -18px; font-size: .64rem; letter-spacing: .08em; text-transform: uppercase; opacity: .55; }
+.drinks .display em { color: var(--roxo-700); }
+.drinks .lead { color: #4A3A12; }
+.drink-list { margin-top: 26px; display: grid; column-gap: 32px; }
+.drink-list li { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1.5px dashed rgba(36, 16, 56, .28); font-weight: 650; }
+.drink-list b { font-weight: 800; font-size: 1.1rem; white-space: nowrap; }
+.chip { display: inline-block; margin-left: 6px; font-style: normal; font-size: .66rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; background: var(--roxo-800); color: var(--amarelo); padding: 3px 8px; border-radius: 999px; vertical-align: middle; }
+.drinks__cta { margin-top: 28px; }
+.drinks__cta .btn { width: 100%; }
+
+/* ==========================================================
+   COMBOS — pôsteres
+   ========================================================== */
+.combos2 { background: var(--roxo-900); color: var(--creme); padding: clamp(80px, 12vw, 150px) 0; position: relative; overflow: hidden; }
+.combos2__head { max-width: 760px; }
+.posters { margin-top: 40px; display: grid; gap: 16px; }
+.poster {
+  position: relative; overflow: hidden; isolation: isolate; border-radius: 30px;
+  padding: 28px 26px 190px; min-height: 420px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
+  background: linear-gradient(150deg, var(--roxo-700), var(--roxo-500)); color: var(--creme);
+}
+.poster__tag { font-size: .72rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; background: rgba(255, 255, 255, .16); padding: 5px 12px; border-radius: 999px; }
+.poster__title { font-size: clamp(1.7rem, 5.6vw, 2.6rem); line-height: .98; letter-spacing: -.04em; font-weight: 800; max-width: 14ch; text-wrap: balance; }
+.poster__desc { font-size: .95rem; opacity: .85; max-width: 34ch; }
+.poster__price { font-size: clamp(2.4rem, 8vw, 3.6rem); font-weight: 800; letter-spacing: -.04em; line-height: 1; color: var(--amarelo); margin: 4px 0 8px; }
+.poster .btn { position: relative; z-index: 2; }
+.poster__img {
+  position: absolute; z-index: -1; width: 62%; max-width: 340px; right: -6%; bottom: -4%; rotate: -10deg;
+  filter: drop-shadow(0 26px 26px rgba(0, 0, 0, .4)); transition: transform .7s var(--ease-spring);
+}
+.poster:hover .poster__img, .poster:hover .poster__art { transform: scale(1.06) rotate(3deg); }
+.poster__art { position: absolute; z-index: -1; right: 0; bottom: 0; width: 80%; max-width: 460px; aspect-ratio: 1.5; transition: transform .7s var(--ease-spring); }
+.poster__art img { position: absolute; filter: drop-shadow(0 22px 24px rgba(0, 0, 0, .4)); }
+.pa1 { width: 50%; right: 34%; bottom: 8%; }
+.pa2 { width: 58%; right: 0; bottom: -4%; z-index: 2; }
+.pa3 { width: 30%; right: 52%; bottom: 0; rotate: -12deg; z-index: 3; }
+.poster--yellow { background: var(--amarelo); color: var(--roxo-800); }
+.poster--yellow .poster__tag { background: rgba(36, 16, 56, .1); }
+.poster--yellow .poster__price { color: var(--roxo-700); }
+.poster--lilac { background: var(--lilas); color: var(--roxo-800); }
+.poster--lilac .poster__tag { background: rgba(36, 16, 56, .1); }
+.poster--lilac .poster__price { color: var(--roxo-700); }
+.combos2__note { margin-top: 18px; font-size: .78rem; color: #9B86AE; }
+
+/* ==========================================================
+   O ESPAÇO
+   ========================================================== */
+.space { padding: clamp(80px, 12vw, 150px) 0 clamp(60px, 10vw, 110px); background: var(--creme); overflow: hidden; }
+.space__title {
+  margin-top: 18px; max-width: 13ch;
+  font-size: clamp(2.8rem, 10vw, 7.4rem); line-height: .9; letter-spacing: -.05em; font-weight: 800;
+  font-variation-settings: "wdth" 85; color: var(--roxo-800); text-wrap: balance;
+}
+.space__title em { font-family: var(--f-serif); font-style: italic; font-weight: 400; color: var(--roxo-700); letter-spacing: -.02em; }
+.space__figure { margin-top: 40px; }
+.space__frame {
+  position: relative; overflow: hidden; border-radius: 24px;
+  margin-inline: var(--gutter); max-width: 1400px; aspect-ratio: 3 / 2;
+  box-shadow: 0 40px 80px -40px rgba(36, 16, 56, .6);
+}
+@media (max-width: 767px) { .space__frame { aspect-ratio: 1 / 1; } }
+.space__frame img { width: 100%; height: 112%; object-fit: cover; object-position: 45% 50%; transform: translate3d(0, var(--sy, 0px), 0) scale(1.02); will-change: transform; }
+.space__figure figcaption { margin-top: 12px; font-size: .78rem; color: var(--tinta-2); }
+.space__points { margin-top: 44px; display: grid; gap: 0; border-top: 1px solid rgba(72, 33, 107, .16); }
+.space__points li { position: relative; padding: 24px 0 24px 64px; border-bottom: 1px solid rgba(72, 33, 107, .16); }
+.space__n { position: absolute; left: 0; top: 22px; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--amarelo); color: var(--roxo-800); font-weight: 800; font-size: .9rem; }
+.space__points h3 { font-size: 1.35rem; font-weight: 800; letter-spacing: -.03em; color: var(--roxo-800); }
+.space__points p { margin-top: 4px; color: var(--tinta-2); }
+.space__cta { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+.space__cta .btn { width: 100%; }
+.link-arrow--purple { color: var(--roxo-700); }
+
+@media (min-width: 560px) {
+  .drink-list { grid-template-columns: 1fr 1fr; }
+  .drinks__cta .btn, .space__cta .btn { width: auto; }
+  .ad__sticker--sizes { width: 128px; height: 128px; }
+}
+
+@media (min-width: 768px) {
+  .sizes { grid-template-columns: repeat(3, 1fr); }
+  .space__points { grid-template-columns: repeat(3, 1fr); gap: 32px; border-top: 0; }
+  .space__points li { border-bottom: 0; border-top: 2px solid var(--roxo-800); padding: 24px 0 0; }
+  .space__n { position: static; margin-bottom: 14px; }
+  .posters { grid-template-columns: 1fr 1fr; }
+  .poster--main { grid-column: 1 / -1; }
+  .space__frame { border-radius: 32px; }
+}
+
+@media (min-width: 1000px) {
+  .ad { grid-template-columns: 1fr 1fr; grid-template-rows: none; gap: 40px; padding-block: 72px; }
+  .ad__art { min-height: 520px; }
+  .ad__title { font-size: clamp(4.6rem, 8.6vw, 9rem); }
+  .drinks__grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 72px; }
+  .drinks__art { width: 100%; max-width: 540px; }
+  .posters { grid-template-columns: 1.25fr 1fr; grid-template-rows: 1fr 1fr; }
+  .poster--main { grid-column: 1; grid-row: 1 / 3; padding: 44px 40px 300px; }
+  .poster--main .poster__title { font-size: clamp(2.4rem, 4vw, 3.6rem); }
+  .poster--main .poster__art { width: 100%; max-width: 640px; }
+  .poster:not(.poster--main) { padding: 32px 32px 32px; min-height: 340px; }
+  .poster:not(.poster--main) .poster__title, .poster:not(.poster--main) .poster__desc { max-width: 58%; }
+  .poster:not(.poster--main) .poster__img { width: 48%; right: -4%; bottom: 50%; translate: 0 50%; }
+  .space__frame { margin-inline: auto; width: calc(100% - 2 * var(--gutter)); }
+}
+
+/* ==========================================================
    MOVIMENTO REDUZIDO
    ========================================================== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
   html { scroll-behavior: auto; }
   .js [data-reveal] { opacity: 1; transform: none; }
+  .js .ad:not(.is-active) .ad__copy > *, .js .ad:not(.is-active) .ad__art { opacity: 1; transform: none; }
 }
