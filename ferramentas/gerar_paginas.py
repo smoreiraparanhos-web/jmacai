@@ -59,10 +59,10 @@ def foto(lugar, alt, extra='', eager=False):
     load = 'fetchpriority="high"' if eager else 'loading="lazy"'
     if c.get('recorte'):
         return ('<div class="ph ph--cutout %s"><img src="%s" alt="%s" width="%d" height="%d" %s decoding="async">'
-                '<span class="ph__credit">Foto ilustrativa</span></div>') % (extra, c['src'], html.escape(alt), c['w'], c['h'], load)
+                '</div>') % (extra, c['src'], html.escape(alt), c['w'], c['h'], load)
     return ('<div class="ph %s"><img src="assets/fotos/%s-1600.webp" srcset="assets/fotos/%s-800.webp 800w, assets/fotos/%s-1600.webp 1600w" '
             'sizes="(min-width: 768px) 60vw, 100vw" alt="%s" width="%d" height="%d" %s decoding="async">'
-            '<span class="ph__credit">Foto ilustrativa</span></div>') % (extra, nome, nome, nome, html.escape(alt), c['w'], c['h'], load)
+            '</div>') % (extra, nome, nome, nome, html.escape(alt), c['w'], c['h'], load)
 
 def btn(txt, cls='btn--yellow btn--lg'):
     return '<a class="btn %s" data-link="pedido" href="%s" target="_blank" rel="noopener">%s%s</a>' % (cls, PEDIDO, txt, SR_EXT)
@@ -72,6 +72,7 @@ def plist(itens, cls=''):
     return '<ul class="plist %s">%s</ul>' % (cls, li)
 
 def proxima(arq, nome, ant=None):
+    return ''
     a = '<a href="%s"><small>Anterior</small>%s</a>' % ant if ant else '<span></span>'
     return '<div class="wrap next">%s<a href="%s" style="text-align:right"><small>Próxima</small>%s</a></div>' % (a, arq, nome)
 
@@ -195,12 +196,34 @@ def p_inicio():
     return hero('inicio', 'Açaí servido com frutas', 'Rua Argentina, 196 · Eldorado do Sul', 'O açaí da Rua Argentina.',
                 'Tradicional, trufado ou de frutas, de 250 a 500 ml. Hambúrguer de costela e bebida gelada. Todos os dias até 23h30.',
                 btn('Pedir agora') + '<a class="link-arrow" href="acai.html" style="color:#fff">Ver o cardápio</a>', tema='roxo') + '''
-<section class="blk">
+<section class="blk blk--menu">
   <div class="wrap">
-    <div class="doors">
-      <a class="door door--acai%s" href="acai.html">%s<div><h2>Açaí</h2><p>Tradicional, trufado e de frutas · a partir de <b data-price-from="acai-copo">R$ 15,00</b></p><span class="door__go">Ver tamanhos</span></div></a>
-      <a class="door door--burger%s" href="burgers.html">%s<div><h2>Burgers</h2><p>Do tradicional ao Mega Bacon 2.0 · a partir de <b data-price="burger-tradicional">R$ 23,00</b></p><span class="door__go">Ver burgers</span></div></a>
-      <a class="door door--combo%s" href="combos.html">%s<div><h2>Combos</h2><p>Burger + bebida + açaí 300 ml · <b data-price="combo-burger-acai">R$ 45,00</b></p><span class="door__go">Ver combos</span></div></a>
+    <h2 class="sr">Cardápio em resumo</h2>
+    <div class="menu4">
+      <div class="menu4__col">
+        <h3><a href="acai.html">Açaí</a></h3>
+        <p class="menu4__sub">Copos de 250 a 500 ml</p>
+        %s
+        <a class="menu4__more" href="acai.html">Todos os tamanhos</a>
+      </div>
+      <div class="menu4__col">
+        <h3><a href="burgers.html">Burgers</a></h3>
+        <p class="menu4__sub">Bife bovino, costela ou frango</p>
+        %s
+        <a class="menu4__more" href="burgers.html">Todos os burgers</a>
+      </div>
+      <div class="menu4__col">
+        <h3><a href="combos.html">Combos</a></h3>
+        <p class="menu4__sub">Burger com bebida e açaí ou fritas</p>
+        %s
+        <a class="menu4__more" href="combos.html">Ver combos</a>
+      </div>
+      <div class="menu4__col">
+        <h3><a href="bebidas.html">Bebidas</a></h3>
+        <p class="menu4__sub">A mais pedida é a Coca Zero 2 L</p>
+        %s
+        <a class="menu4__more" href="bebidas.html">Todas as bebidas</a>
+      </div>
     </div>
   </div>
 </section>
@@ -211,17 +234,6 @@ def p_inicio():
     <div><dt>Telefone</dt><dd><a data-link="tel" href="tel:+555198914468" data-jm="telefone">(51) 9891-4468</a></dd></div>
     <div><dt>Atendimento</dt><dd>No salão ou por delivery</dd></div>
   </dl>
-</section>
-<section class="blk">
-  <div class="wrap split">
-    %s
-    <div>
-      <p class="eyebrow eyebrow--purple">Bebidas geladas</p>
-      <h2>A mais pedida da loja é a <em>Coca Zero 2 L.</em></h2>
-      <p class="lead">Também tem lata, Monster latão, H2O e água, a partir de <b data-price="agua">R$ 3,00</b>.</p>
-      <p style="margin-top:24px"><a class="btn btn--purple btn--lg" href="bebidas.html">Ver bebidas</a></p>
-    </div>
-  </div>
 </section>
 <section class="blk blk--purple">
   <div class="wrap">
@@ -237,8 +249,22 @@ def p_inicio():
     <p class="final__text">Todo o cardápio, com preços e opções, no pedido online. Pedido mínimo de R$ 10.</p>
     <div>%s<p class="final__note">Pedidos feitos pela plataforma oficial da loja, Anota.ai.</p></div>
   </div>
-</section>''' % (porta('porta-acai', 'Açaí com frutas') + porta('porta-burger', 'Hambúrguer com cheddar') + porta('porta-combo', 'Hambúrguer com fritas') + (
-                 MAPS, split_foto('bebidas-destaque', 'Refrigerante gelado'), btn('Ver o cardápio e pedir', 'btn--yellow btn--xl')))
+</section>''' % (
+        plist([('Tradicional 250 ml', 'data-price-opt="acai-copo|250 ml"', 'R$ 15,00'),
+               ('Trufado 300 ml', 'data-price-opt="acai-trufado|300 ml"', 'R$ 19,00'),
+               ('Trufado de frutas 400 ml', 'data-price-opt="trufado-frutas|400 ml · 4 cremes grátis"', 'R$ 22,00'),
+               ('Tradicional 500 ml', 'data-price-opt="acai-copo|500 ml"', 'R$ 25,00')]),
+        plist([('Tradicional', 'data-price="burger-tradicional"', 'R$ 23,00'),
+               ('Mega Bacon', 'data-price="burger-mega-bacon"', 'R$ 28,00'),
+               ('Costela Crispy', 'data-price="burger-costela-crispy"', 'R$ 31,99'),
+               ('Mega Bacon 2.0 com fritas', 'data-price="burger-mega-bacon-2"', 'R$ 42,00')]),
+        plist([('Burger + bebida + açaí 300 ml', 'data-price="combo-burger-acai"', 'R$ 45,00'),
+               ('Tradicional + bebida + fritas', 'data-price="combo-tradicional"', 'R$ 35,00')]),
+        plist([('Coca Zero 2 L', 'data-price="coca-zero-2l"', 'R$ 15,00'),
+               ('Coca lata', 'data-price="coca-lata"', 'R$ 7,00'),
+               ('Monster latão', 'data-price="monster"', 'R$ 10,00'),
+               ('Água', 'data-price="agua"', 'R$ 3,00')]),
+        MAPS, btn('Ver o cardápio e pedir', 'btn--yellow btn--xl'))
 
 # ------------------------------------------------------------ AÇAÍ
 def p_acai():
@@ -248,7 +274,7 @@ def p_acai():
     padrao = [('250', '', '250 ml', 'R$ 15,00'), ('300', '', '300 ml', 'R$ 19,00'), ('400', '', '400 ml', 'R$ 22,00'), ('500', '', '500 ml', 'R$ 25,00')]
     frutas = [('250', '2 cremes grátis', '250 ml · 2 cremes grátis', 'R$ 15,00'), ('300', '3 cremes grátis', '300 ml · 3 cremes grátis', 'R$ 19,00'),
               ('400', '4 cremes grátis', '400 ml · 4 cremes grátis', 'R$ 22,00')]
-    return hero('acai-hero', 'Açaí cremoso com frutas', 'Açaí · copos de 250 a 500 ml', 'Açaí.',
+    return hero('acai-hero', 'Açaí cremoso com frutas', 'Açaí · copos de 250 a 500 ml', 'Açaí',
                 'Tradicional, trufado ou de frutas. No trufado, o creme que você escolhe vai em volta do copo.', btn('Pedir açaí')) + '''
 <section class="blk">
   <div class="wrap">
@@ -269,7 +295,7 @@ def p_burgers():
              ('Mega Bacon <small>Brioche, bife de costela de 120 g e 2 fatias de cheddar</small>', 'data-price="burger-mega-bacon"', 'R$ 28,00'),
              ('Costela Crispy <small>Brioche, costela artesanal de 120 g e muçarela empanada</small>', 'data-price="burger-costela-crispy"', 'R$ 31,99'),
              ('Mega Bacon 2.0 com fritas <small>2 bifes de costela de 120 g e 2 fatias de cheddar</small>', 'data-price="burger-mega-bacon-2"', 'R$ 42,00')]
-    return hero('burgers-hero', 'Hambúrguer com queijo', 'Hambúrgueres · de R$ 23 a R$ 42', 'Burgers.',
+    return hero('burgers-hero', 'Hambúrguer com queijo', 'Hambúrgueres · de R$ 23 a R$ 42', 'Burgers',
                 'Bife bovino, costela artesanal ou frango crocante. Do tradicional ao Mega Bacon 2.0 com fritas.', btn('Pedir burger')) + '''
 <section class="blk blk--dark">
   <div class="wrap split">
@@ -291,7 +317,7 @@ def p_bebidas():
              ('Coca-Cola Zero lata', 'data-price="coca-zero-lata"', 'R$ 7,00'), ('Guaraná lata', 'data-price="guarana-lata"', 'R$ 6,00'),
              ('Monster latão', 'data-price="monster"', 'R$ 10,00'), ('H2O', 'data-price="h2o"', 'R$ 8,00'),
              ('Água com gás', 'data-price="agua-gas"', 'R$ 3,00'), ('Água sem gás', 'data-price="agua"', 'R$ 3,00')]
-    return hero('bebidas-hero', 'Refrigerante gelado', 'Bebidas geladas', 'Bebidas.',
+    return hero('bebidas-hero', 'Refrigerante gelado', 'Bebidas geladas', 'Bebidas',
                 'A mais pedida da loja é a Coca Zero 2 L. Do latão ao 2 litros, pra acompanhar o pedido.', btn('Pedir bebidas', 'btn--purple btn--lg'), curto=True, tema='amarelo') + '''
 <section class="blk">
   <div class="wrap split split--rev">
@@ -309,7 +335,7 @@ def p_combos():
     def deal(lugar, alt, tag, nome, desc, pid, preco, cta, cls=''):
         return '''<article class="deal %s">%s<div class="deal__body"><p class="deal__tag">%s</p><h3>%s</h3><p>%s</p><p class="deal__price" data-price="%s">%s</p>%s</div></article>''' % (
             cls, foto(lugar, alt), tag, nome, desc, pid, preco, btn(cta, 'btn--yellow' if not cls else 'btn--purple'))
-    return hero('combos-hero', 'Hambúrguer com fritas', 'Combos', 'Combos.', 'Burger, bebida e açaí por R$ 45. Ou burger com fritas e bebida por R$ 35.',
+    return hero('combos-hero', 'Hambúrguer com fritas', 'Combos', 'Combos', 'Burger, bebida e açaí por R$ 45. Ou burger com fritas e bebida por R$ 35.',
                 btn('Pedir combo'), curto=True) + '''
 <section class="blk">
   <div class="wrap">
@@ -337,7 +363,6 @@ def p_espaco():
         <div class="info__row"><dt>Atendimento</dt><dd>No salão ou por delivery</dd></div>
       </dl>
       <a class="insta" data-link="instagram" href="https://www.instagram.com/jmacaieldoradodosul/" target="_blank" rel="noopener" style="margin-top:20px">
-        <svg class="insta__ico" aria-hidden="true"><use href="#i-insta"/></svg>
         <span class="insta__txt"><small>Siga a JM no Instagram</small><strong>@jmacaieldoradodosul</strong></span>
       </a>
     </div>

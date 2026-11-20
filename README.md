@@ -7,23 +7,6 @@ Site da JM Açaí (Eldorado do Sul, RS). HTML, CSS e JavaScript puros, sem build
 
 Escopo completo do e-commerce, com fases seguintes e o que falta para ativar: [`docs/ESCOPO-ECOMMERCE.md`](docs/ESCOPO-ECOMMERCE.md).
 
-## V2 — "ficha técnica" (pasta `v2/`)
-
-Segunda direção visual, publicada ao lado da V1 em `.../jmacai/v2/`. Usa o mesmo `js/config.js` e o mesmo `js/catalogo.js` da raiz.
-
-- **Copo medidor:** escolha tradicional, trufado ou de frutas e o tamanho; o copo enche até a marca e mostra o preço.
-- **Ficha dos burgers:** cada hambúrguer é desenhado camada por camada a partir de `camadas` no `catalogo.js`. Tocar numa linha da tabela troca o desenho, a ficha e o preço.
-- **Prateleira de bebidas:** lado a lado, em escala aproximada, sem logos de marca.
-- **Fotos:** quando houver, coloque em `assets/fotos/` e preencha `fotos` no `config.js` (copo de açaí e salão). Sem foto, a página usa os desenhos.
-
-**Fotos para pedir à loja (celular, luz de janela, fundo liso):**
-1. Açaí trufado de lado, mostrando o creme em volta do copo (vertical).
-2. Os 4 tamanhos de copo lado a lado.
-3. Mega Bacon cortado ao meio (horizontal).
-4. Combo burger + bebida + açaí na mesa.
-5. Salão com as mesas (horizontal).
-6. Fachada e letreiro.
-
 ## Páginas
 
 O site tem uma página por item do menu: `index.html` (Início), `acai.html`, `burgers.html`, `bebidas.html`, `combos.html`, `espaco.html` e `loja.html`.
@@ -58,7 +41,8 @@ jmacai/
 ├── docs/ESCOPO-ECOMMERCE.md
 └── assets/
     ├── favicon.svg
-    └── img/            acai-bowl.svg, trufado-frutas.svg, bebida.svg, garrafa.svg, espaco.svg, burger.webp, og.jpg
+    ├── img/            burger.webp, og.jpg
+    └── fotos/          fotos dos produtos (quando houver) + creditos.json
 ```
 
 ## O que editar
@@ -88,19 +72,18 @@ O HTML da vitrine também traz os dados da loja escritos no código, para SEO. S
 | Pagamento, modalidades e taxa de entrega | Valores provisórios no `config.js`. Confirmar. |
 | Cremes, molhos e acompanhamentos | Não constam na captura do cardápio. Hoje o cliente informa na observação. Cadastrar como opções. |
 | Descrições dos hambúrgueres | Algumas estavam cortadas na fonte. Completar. |
-| Logotipo e fotos | Wordmark provisório, ilustrações e foto de banco livre, marcados como ilustrativos. Substituir pelos originais. |
+| Logotipo e fotos | Wordmark provisório e uma foto de banco livre (hambúrguer), marcada como ilustrativa. Substituir pelos originais. |
 
 ## Trocar as imagens
 
 - **Produtos da loja:** troque o campo `imagem` de cada produto em `js/catalogo.js`. Funciona melhor com fotos quadradas de fundo transparente (PNG ou WebP, ~600×600).
-- **Vitrine:** substitua `assets/img/acai-bowl.svg` e `assets/img/burger.webp` (fundo transparente) e atualize os `src` no `index.html`.
+- **Páginas:** veja a seção Páginas acima (pasta `assets/fotos/` + dicionário `FOTO` do gerador).
 - **O espaço:** troque `assets/img/espaco.svg` por uma foto do salão (horizontal, 3:2, ~1800 px) e remova a legenda "Ilustração" da seção.
-- Depois de trocar as fotos, remova as etiquetas "Imagens ilustrativas" e "Foto ilustrativa" e o crédito no rodapé.
+- Depois de trocar as fotos, ajuste a nota de crédito no rodapé (o gerador faz isso a partir de `creditos.json`).
 
 ## Créditos
 
 - Foto do hambúrguer: Renee Comet, National Cancer Institute. Domínio público ([Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Cheeseburger.jpg)). Recortada para fundo transparente.
-- Ilustrações de açaí, trufado de frutas, bebidas e do salão: criadas para este projeto.
 - Fontes: Bricolage Grotesque e Instrument Serif (Google Fonts, licença OFL).
 
 ## Acessibilidade e desempenho

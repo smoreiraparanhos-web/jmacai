@@ -83,8 +83,8 @@
       var li = document.createElement('li');
       var off = p.disponivel === false;
       li.innerHTML =
-        '<button type="button" class="product' + (off ? ' is-off' : '') + '" data-open-product="' + esc(p.id) + '"' + (off ? ' disabled' : '') + '>' +
-          '<span class="product__media"><img src="' + esc(p.imagem) + '" alt="" loading="lazy" width="200" height="200"></span>' +
+        '<button type="button" class="product' + (p.imagem ? '' : ' product--noimg') + (off ? ' is-off' : '') + '" data-open-product="' + esc(p.id) + '"' + (off ? ' disabled' : '') + '>' +
+          (p.imagem ? '<span class="product__media"><img src="' + esc(p.imagem) + '" alt="" loading="lazy" width="200" height="200"></span>' : '') +
           '<span class="product__info">' +
             (p.selo ? '<span class="product__badge">' + esc(p.selo) + '</span>' : '') +
             '<span class="product__name">' + esc(p.nome) + '</span>' +
@@ -167,8 +167,8 @@
     editKey = item ? item.key : null;
     qtd = item ? item.qty : 1;
 
-    $('[data-pd-img]').src = atual.imagem;
-    $('[data-pd-img]').alt = atual.alt || '';
+    $('.pd__media', pdDlg).hidden = !atual.imagem;
+    if (atual.imagem) { $('[data-pd-img]').src = atual.imagem; $('[data-pd-img]').alt = atual.alt || ''; }
     $('[data-pd-name]').textContent = atual.nome;
     $('[data-pd-desc]').textContent = atual.descricao || '';
     $('[data-pd-tag]').hidden = !atual.selo;
@@ -332,7 +332,7 @@
     ul.innerHTML = cart.map(function (it) {
       var l = linhaItem(it);
       return '<li class="ci" data-key="' + esc(it.key) + '">' +
-        '<img class="ci__img" src="' + esc(l.p.imagem) + '" alt="" width="64" height="64">' +
+        (l.p.imagem ? '<img class="ci__img" src="' + esc(l.p.imagem) + '" alt="" width="64" height="64">' : '<span class="ci__img ci__img--none" aria-hidden="true"></span>') +
         '<div class="ci__info">' +
           '<p class="ci__name">' + esc(l.p.nome) + '</p>' +
           (l.detalhes ? '<p class="ci__det">' + esc(l.detalhes) + '</p>' : '') +
@@ -501,7 +501,7 @@
       next.innerHTML = 'Revisar pedido';
     } else {
       next.innerHTML = '<svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg> Enviar pelo WhatsApp';
-      if (!L.envioAtivo) { desab = true; alerta = 'Loja em teste: o envio de pedidos ainda não está ativo. Peça pelo cardápio oficial no Anota.ai.'; }
+      if (!L.envioAtivo) { desab = true; alerta = 'Os pedidos por aqui começam em breve. Por enquanto, finalize no cardápio oficial da JM no Anota.ai.'; }
       else if (!L.aceitarForaDoHorario && !lojaAberta()) { desab = true; alerta = 'A loja está fechada agora. Abre às ' + (C.horario ? C.horario.abre.replace(':', 'h') : '') + '.'; }
     }
     next.disabled = desab;

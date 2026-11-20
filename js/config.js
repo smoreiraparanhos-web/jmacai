@@ -58,53 +58,5 @@ window.JM = {
     pedidoMinimo: 1000,
     // false = fora do horário a sacola funciona, mas o envio fica bloqueado.
     aceitarForaDoHorario: false
-  },
-
-  /*
-   * FOTOS DA V2 (pasta /v2). Coloque as fotos em assets/fotos/ e informe o caminho aqui.
-   * null = usa o desenho/composição atual. Lista do que fotografar: README.
-   */
-  fotos: {
-    acaiTrufado: null,   // ex.: 'assets/fotos/acai-trufado.jpg' (vertical, copo de lado, fundo liso)
-    salao: null          // ex.: 'assets/fotos/salao.jpg' (horizontal, salão com as mesas)
-  },
-
-  /*
-   * Seção "Encontre seu próximo favorito".
-   * Hoje são sugestões por momento (sem preço, sem produto inventado).
-   * Quando houver produtos reais, troque os textos e preencha "preco" (ex.: 'R$ 19,90');
-   * o preço aparece automaticamente em destaque. Deixe null para não mostrar.
-   */
-  sugestoes: [
-    {
-      id: 'gelado',
-      aba: 'Algo gelado',
-      titulo: 'Calor pedindo açaí.',
-      texto: 'Escolha a base, os acompanhamentos e deixe do seu jeito. Açaí e sorvete estão no cardápio.',
-      imagem: 'assets/img/acai-bowl.svg',
-      alt: 'Ilustração de tigela de açaí com frutas e granola',
-      cta: 'Escolher meu açaí',
-      preco: null
-    },
-    {
-      id: 'fome',
-      aba: 'Fome de verdade',
-      titulo: 'Quando a fome é séria.',
-      texto: 'Pão, carne e queijo. O hambúrguer resolve, e o cardápio completo está a um toque.',
-      imagem: 'assets/img/burger.webp',
-      alt: 'Hambúrguer com queijo e alface (foto ilustrativa)',
-      cta: 'Ver hambúrgueres',
-      preco: null
-    },
-    {
-      id: 'dupla',
-      aba: 'A dupla',
-      titulo: 'Burger primeiro. Açaí depois.',
-      texto: 'Uma combinação que combina com você: o salgado pra matar a fome e o gelado pra fechar a noite.',
-      imagem: 'dupla',
-      alt: 'Hambúrguer e tigela de açaí lado a lado',
-      cta: 'Montar minha dupla',
-      preco: null
-    }
-  ]
+  }
 };

@@ -15,17 +15,16 @@
  *   disponivel     false mostra "Indisponível"
  *   obsLabel       pergunta do campo de observação (opcional)
  *   obsPlaceholder exemplo dentro do campo (opcional)
- *   curto, camadas, extras  só hambúrgueres: nome curto e montagem para o desenho da V2
- *                  (camadas de cima para baixo; tipos em v2/ilustra.js)
+ *   curto, camadas, extras  só hambúrgueres: nome curto e ingredientes camada por camada
  *   grupos         opções:
  *     id, nome, tipo ('unico' | 'multiplo'), min, max,
  *     opcoes [{ nome, preco }]   preco extra em centavos (0 = grátis)
  */
 (function () {
-  var IMG_ACAI = 'assets/img/acai-bowl.svg';
-  var IMG_FRUTAS = 'assets/img/trufado-frutas.svg';
-  var IMG_BURGER = 'assets/img/burger.webp';
-  var IMG_BEBIDA = 'assets/img/bebida.svg';
+  var IMG_ACAI = null;   // sem foto real ainda
+  var IMG_FRUTAS = null;
+  var IMG_BURGER = null;  // a mesma foto em todos os burgers parecia repetida; volta quando houver foto de cada um
+  var IMG_BEBIDA = null;
 
   function tamanhos(lista) {
     return { id: 'tamanho', nome: 'Tamanho', tipo: 'unico', min: 1, max: 1, opcoes: lista };
