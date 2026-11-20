@@ -24,6 +24,17 @@ Segunda direção visual, publicada ao lado da V1 em `.../jmacai/v2/`. Usa o mes
 5. Salão com as mesas (horizontal).
 6. Fachada e letreiro.
 
+## Páginas
+
+O site tem uma página por item do menu: `index.html` (Início), `acai.html`, `burgers.html`, `bebidas.html`, `combos.html`, `espaco.html` e `loja.html`.
+As seis primeiras são **geradas** por `ferramentas/gerar_paginas.py` (mesmo cabeçalho, menu e rodapé). Para mudar textos, menu ou fotos, edite o script e rode:
+
+```bash
+python3 ferramentas/gerar_paginas.py
+```
+
+**Fotos:** coloque em `assets/fotos/` como `<nome>-1600.webp` e `<nome>-800.webp`, registre autor e licença em `assets/fotos/creditos.json` e aponte o lugar no dicionário `FOTO` do script. Lugar sem foto vira um bloco de cor da marca automaticamente.
+
 ## Rodar localmente
 
 ```bash
