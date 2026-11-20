@@ -129,7 +129,7 @@
   /* ---------- 4. Barra de pedido mobile ---------- */
   var orderbar = $('[data-orderbar]');
   var orderBtn = orderbar && $('a', orderbar);
-  var heroCta = $('.hero__actions .btn');
+  var heroCta = $('.hero__actions .btn, .pg-hero__actions .btn');
   var finalSec = $('.final');
   var heroVisivel = true, finalVisivel = false;
 
@@ -141,8 +141,10 @@
     orderbar.setAttribute('aria-hidden', show ? 'false' : 'true');
   }
   if ('IntersectionObserver' in window && orderbar) {
-    new IntersectionObserver(function (e) { heroVisivel = e[0].isIntersecting; atualizaBarra(); }).observe(heroCta);
-    new IntersectionObserver(function (e) { finalVisivel = e[0].isIntersecting; atualizaBarra(); }, { rootMargin: '0px 0px 200px 0px' }).observe(finalSec);
+    if (heroCta) new IntersectionObserver(function (e) { heroVisivel = e[0].isIntersecting; atualizaBarra(); }).observe(heroCta);
+    else heroVisivel = false;
+    if (finalSec) new IntersectionObserver(function (e) { finalVisivel = e[0].isIntersecting; atualizaBarra(); }, { rootMargin: '0px 0px 200px 0px' }).observe(finalSec);
+    atualizaBarra();
   }
 
   /* ---------- 5. Reveal ao rolar ---------- */
