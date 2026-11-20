@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JM Açaí | Açaí e Hambúrgueres na Rua Argentina, Eldorado do Sul</title>
+<meta name="description" content="Açaí tradicional, trufado e de frutas de 250 a 500 ml, hambúrgueres e bebidas geladas. Rua Argentina, 196, Eldorado do Sul. Todos os dias, das 13h30 às 23h30.">
+<meta name="theme-color" content="#F3EEE4">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="JM Açaí · Rua Argentina, 196">
+<meta property="og:description" content="Açaí de 250 a 500 ml, hambúrgueres e bebidas geladas em Eldorado do Sul.">
+<meta property="og:image" content="../assets/img/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="v2.css">
+<script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.JM_OK)document.documentElement.classList.remove('js')},2500)</script>
+<script src="../js/config.js" defer></script>
+<script src="../js/catalogo.js" defer></script>
+<script src="ilustra.js" defer></script>
+<script src="v2.js" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#acai">Pular para o cardápio</a>
+
+<header class="top">
+  <a class="mark" href="#" aria-label="JM Açaí, início">JM<span>AÇAÍ</span></a>
+  <nav class="top__nav" aria-label="Seções">
+    <a href="#acai">Açaí</a>
+    <a href="#burgers">Burgers</a>
+    <a href="#bebidas">Bebidas</a>
+    <a href="#endereco">Endereço</a>
+  </nav>
+  <a class="order" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">Pedir<span class="sr"> (abre o cardápio oficial em nova aba)</span></a>
+</header>
+
+<p class="statusline mono">
+  <span class="status" data-status><i></i><span data-status-text>Todos os dias, 13h30–23h30</span></span>
+  <span>Rua Argentina, 196 · Eldorado do Sul</span>
+  <span class="hide-sm">Delivery e salão</span>
+</p>
+
+<main>
+
+<!-- ===================== AÇAÍ ===================== -->
+<section class="acai" id="acai" aria-labelledby="acai-t">
+  <div class="acai__head">
+    <p class="label mono">Açaí · 250 a 500 ml</p>
+    <h1 class="mega" id="acai-t">Açaí<br>trufado</h1>
+    <p class="acai__desc">Você escolhe o creme. Ele vai em volta do copo, por dentro.</p>
+  </div>
+
+  <div class="acai__lab" data-lab>
+    <div class="cup" aria-hidden="true">
+      <div class="photo-slot" data-photo="acaiTrufado"></div>
+      <svg class="cup__svg" viewBox="0 0 240 320">
+        <defs>
+          <clipPath id="cupClip"><path d="M30 20 H210 L188 300 Q186 312 174 312 H66 Q54 312 52 300 Z"/></clipPath>
+          <pattern id="fruitDots" width="34" height="34" patternUnits="userSpaceOnUse">
+            <circle cx="8" cy="10" r="5" fill="#E0213A"/><circle cx="26" cy="22" r="4" fill="#F2D27A"/><circle cx="20" cy="6" r="3" fill="#8DC63F"/>
+          </pattern>
+        </defs>
+        <g clip-path="url(#cupClip)">
+          <rect class="cup__fill" x="0" y="0" width="240" height="320" fill="#3B1650"/>
+          <rect class="cup__fruit" x="0" y="0" width="240" height="320" fill="url(#fruitDots)" opacity="0"/>
+          <path class="cup__cream" d="M30 20 H210 L188 300 Q186 312 174 312 H66 Q54 312 52 300 Z" fill="none" stroke="#F3E3C3" stroke-width="18" opacity="0"/>
+        </g>
+        <path d="M30 20 H210 L188 300 Q186 312 174 312 H66 Q54 312 52 300 Z" fill="none" stroke="#141014" stroke-width="3"/>
+        <g class="cup__marks" font-family="IBM Plex Mono, monospace" font-size="11" fill="#141014">
+          <line x1="204" x2="226" y1="175" y2="175"/><text x="230" y="179">250</text>
+          <line x1="202" x2="226" y1="140" y2="140"/><text x="230" y="144">300</text>
+          <line x1="199" x2="226" y1="90" y2="90"/><text x="230" y="94">400</text>
+          <line x1="196" x2="226" y1="44" y2="44"/><text x="230" y="48">500</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="lab__panel">
+      <div class="seg" role="radiogroup" aria-label="Tipo de açaí" data-types>
+        <button type="button" role="radio" aria-checked="false" data-type="acai-copo">Tradicional</button>
+        <button type="button" role="radio" aria-checked="true" data-type="acai-trufado">Trufado</button>
+        <button type="button" role="radio" aria-checked="false" data-type="trufado-frutas">De frutas</button>
+      </div>
+      <p class="lab__note" data-type-note>Com o creme que você escolher em volta do copo.</p>
+
+      <table class="sizes">
+        <caption class="sr">Tamanhos e preços</caption>
+        <thead><tr><th scope="col">Tamanho</th><th scope="col" class="num">Preço</th></tr></thead>
+        <tbody data-sizes></tbody>
+      </table>
+
+      <a class="order order--lg" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">
+        Pedir <span data-pick>açaí trufado 300 ml</span><span class="sr"> (abre o cardápio oficial em nova aba)</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BURGERS ===================== -->
+<section class="burgers" id="burgers" aria-labelledby="burgers-t">
+  <div class="burgers__hero">
+    <div class="burgers__copy">
+      <p class="label mono">Hambúrgueres · R$ 23 a R$ 42</p>
+      <h2 class="mega mega--light" id="burgers-t" data-b-name>Mega Bacon</h2>
+      <dl class="spec" data-b-spec>
+        <div><dt>Pão</dt><dd>brioche</dd></div>
+        <div><dt>Carne</dt><dd>bife de costela, 120 g</dd></div>
+        <div><dt>Queijo</dt><dd>2 fatias de cheddar</dd></div>
+      </dl>
+      <p class="price-xl mono" data-b-price>R$ 28,00</p>
+      <a class="order order--lg" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">Pedir <span data-b-pick>Mega Bacon</span><span class="sr"> (abre o cardápio oficial em nova aba)</span></a>
+    </div>
+    <figure class="burgers__diagram" aria-live="polite">
+      <div data-b-diagram></div>
+      <figcaption class="mono">Montagem conforme o cardápio oficial · desenho ilustrativo</figcaption>
+    </figure>
+  </div>
+
+  <table class="menu menu--dark">
+    <caption class="sr">Hambúrgueres</caption>
+    <thead><tr><th scope="col">Burger</th><th scope="col">Carne</th><th scope="col" class="num">Preço</th></tr></thead>
+    <tbody>
+      <tr data-row="burger-tradicional"><th scope="row"><button type="button" class="row-btn" data-burger="burger-tradicional" aria-pressed="false">Tradicional</button></th><td>bife bovino 120 g</td><td class="num" data-price="burger-tradicional">R$ 23,00</td></tr>
+      <tr data-row="burger-chicken-crispy"><th scope="row"><button type="button" class="row-btn" data-burger="burger-chicken-crispy" aria-pressed="false">Chicken Crispy</button></th><td>frango crocante</td><td class="num" data-price="burger-chicken-crispy">R$ 23,00</td></tr>
+      <tr data-row="burger-mega-bacon"><th scope="row"><button type="button" class="row-btn" data-burger="burger-mega-bacon" aria-pressed="false">Mega Bacon</button></th><td>costela 120 g</td><td class="num" data-price="burger-mega-bacon">R$ 28,00</td></tr>
+      <tr data-row="burger-costela-crispy"><th scope="row"><button type="button" class="row-btn" data-burger="burger-costela-crispy" aria-pressed="false">Costela Crispy</button></th><td>costela artesanal 120 g + muçarela empanada</td><td class="num" data-price="burger-costela-crispy">R$ 31,99</td></tr>
+      <tr data-row="burger-mega-bacon-2"><th scope="row"><button type="button" class="row-btn" data-burger="burger-mega-bacon-2" aria-pressed="false">Mega Bacon 2.0 <small>com fritas</small></button></th><td>2 × costela 120 g</td><td class="num" data-price="burger-mega-bacon-2">R$ 42,00</td></tr>
+      <tr data-row="combo-tradicional"><th scope="row"><button type="button" class="row-btn" data-burger="combo-tradicional" aria-pressed="false">Combo tradicional <small>bebida e fritas</small></button></th><td>bife bovino 150 g</td><td class="num" data-price="combo-tradicional">R$ 35,00</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ===================== COMBO ===================== -->
+<section class="combo" aria-labelledby="combo-t">
+  <h2 class="combo__line" id="combo-t">
+    <span>Burger</span><span class="plus">+</span><span>bebida</span><span class="plus">+</span><span>açaí 300 ml</span>
+  </h2>
+  <p class="combo__price mono" data-price="combo-burger-acai">R$ 45,00</p>
+  <div class="combo__diagram" data-combo-diagram aria-hidden="true"></div>
+  <a class="order order--lg" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">Pedir o combo<span class="sr"> (abre o cardápio oficial em nova aba)</span></a>
+</section>
+
+<!-- ===================== BEBIDAS ===================== -->
+<section class="drinks" id="bebidas" aria-labelledby="drinks-t">
+  <div class="drinks__head">
+    <p class="label mono">Bebidas geladas</p>
+    <h2 class="big" id="drinks-t">O mais pedido da loja é a Coca Zero 2 L.</h2>
+    <p class="drinks__note mono">Lado a lado, em escala. Desenho ilustrativo.</p>
+  </div>
+  <div class="drinks__shelf" data-shelf></div>
+  <table class="menu sr">
+    <caption>Bebidas e preços</caption>
+    <tbody>
+      <tr><th scope="row">Coca-Cola Zero 2 L <span class="tag mono">mais pedido</span></th><td class="num" data-price="coca-zero-2l">R$ 15,00</td></tr>
+      <tr><th scope="row">Coca-Cola 2 L</th><td class="num" data-price="coca-2l">R$ 15,00</td></tr>
+      <tr><th scope="row">Coca-Cola lata · Coca-Cola Zero lata</th><td class="num" data-price="coca-lata">R$ 7,00</td></tr>
+      <tr><th scope="row">Guaraná lata</th><td class="num" data-price="guarana-lata">R$ 6,00</td></tr>
+      <tr><th scope="row">Monster latão</th><td class="num" data-price="monster">R$ 10,00</td></tr>
+      <tr><th scope="row">H2O</th><td class="num" data-price="h2o">R$ 8,00</td></tr>
+      <tr><th scope="row">Água com ou sem gás</th><td class="num" data-price="agua">R$ 3,00</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ===================== ENDEREÇO ===================== -->
+<section class="place" id="endereco" aria-labelledby="place-t">
+  <h2 class="mega mega--place" id="place-t">Rua Argentina, 196</h2>
+  <div class="place__grid">
+    <p class="place__text">Espaço grande pra sentar e comer com calma. Ou peça e receba em casa.</p>
+    <dl class="spec spec--light">
+      <div><dt>Cidade</dt><dd>Eldorado do Sul — RS</dd></div>
+      <div><dt>Horário</dt><dd data-jm="horario">Todos os dias, das 13h30 às 23h30</dd></div>
+      <div><dt>Telefone</dt><dd><a data-link="tel" href="tel:+555198914468" data-jm="telefone">(51) 9891-4468</a></dd></div>
+      <div><dt>Instagram</dt><dd><a data-link="instagram" href="https://www.instagram.com/jmacaieldoradodosul/" target="_blank" rel="noopener">@jmacaieldoradodosul</a></dd></div>
+    </dl>
+    <div class="place__actions">
+      <a class="order order--lg" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">Pedir agora<span class="sr"> (abre o cardápio oficial em nova aba)</span></a>
+      <a class="ghost" data-link="maps" href="https://www.google.com/maps/search/?api=1&amp;query=JM+A%C3%A7a%C3%AD%2C+Rua+Argentina+196%2C+Eldorado+do+Sul+RS" target="_blank" rel="noopener">Abrir no mapa</a>
+    </div>
+  </div>
+  <figure class="place__photo optional-photo">
+    <div class="photo-slot" data-photo="salao"></div>
+  </figure>
+</section>
+
+</main>
+
+<footer class="foot">
+  <p class="foot__sign">JM agradece à preferência!</p>
+  <p class="mono">© <span data-year>2026</span> JM Açaí · Rua Argentina, 196, Eldorado do Sul — RS · Imagens ilustrativas onde indicado. Foto do hambúrguer: Renee Comet / NCI (domínio público).</p>
+</footer>
+
+<a class="bar" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener" data-bar>
+  <span class="mono" data-bar-status>13h30–23h30</span><b>Pedir</b><span class="sr"> (abre o cardápio oficial em nova aba)</span>
+</a>
+
+</body>
+</html>
