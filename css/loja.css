@@ -355,3 +355,13 @@ html:has(.page-loja) { scroll-padding-top: calc(var(--header-h) + 76px); }
   .drip--shop { height: 70px; }
   .page-loja .footer { padding-bottom: 48px; }
 }
+
+/* produto sem foto: linha só com texto, sem miniatura desenhada */
+.product--noimg { grid-template-columns: 1fr; }
+.ci__img--none { width: 8px; height: 56px; padding: 0; border-radius: 4px; background: var(--roxo-700); }
+.ci:has(.ci__img--none) { grid-template-columns: 8px 1fr auto; }
+.pd__media[hidden] { display: none; }
+.sheet--product .sheet__form:has(.pd__media[hidden]) { grid-template-columns: 1fr; }
+.sheet--product .sheet__form:has(.pd__media[hidden]) .pd__footer { grid-column: 1; }
+.sheet--product:has(.pd__media[hidden]) { width: min(560px, calc(100% - 48px)); }
+.sheet--product .sheet__form:has(.pd__media[hidden]) .pd__body { padding-top: 56px; }
