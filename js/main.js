@@ -412,4 +412,7 @@
     window.addEventListener('scroll', function () { if (!spTick) { spTick = true; requestAnimationFrame(moveSpace); } }, { passive: true });
     moveSpace();
   }
+
+  // tudo inicializado: mantém as animações (senão o <head> remove a classe 'js' e mostra tudo)
+  window.JM_OK = true;
 })();

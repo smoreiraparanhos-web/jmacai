@@ -12,7 +12,7 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="JM Açaí">
 <meta property="og:title" content="JM Açaí | Açaí, Hambúrgueres e Delivery em Eldorado do Sul">
-<meta property="og:description" content="Açaí, sorvetes e hambúrgueres na Rua Argentina, 196. Delivery e atendimento presencial. Peça pelo cardápio oficial.">
+<meta property="og:description" content="Açaí, trufados e hambúrgueres na Rua Argentina, 196. Delivery e atendimento presencial. Peça pelo cardápio oficial.">
 <meta property="og:image" content="assets/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -27,7 +27,7 @@
   "@context": "https://schema.org",
   "@type": "Restaurant",
   "name": "JM Açaí",
-  "servesCuisine": ["Açaí", "Sorvetes", "Hambúrgueres"],
+  "servesCuisine": ["Açaí", "Hambúrgueres"],
   "telephone": "+55 51 9891-4468",
   "address": {
     "@type": "PostalAddress",
@@ -47,7 +47,7 @@
 }
 </script>
 
-<script>document.documentElement.classList.add('js')</script>
+<script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.JM_OK)document.documentElement.classList.remove('js')},2500)</script>
 <script src="js/config.js" defer></script>
 <script src="js/catalogo.js" defer></script>
 <script src="js/main.js" defer></script>
@@ -90,7 +90,7 @@
         <li><a href="loja.html" class="nav__link nav__link--loja">Loja</a></li>
         <li class="nav__mobile-extra">
           <a class="btn btn--yellow btn--block" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">
-            Fazer pedido <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>
+            Fazer pedido
           </a>
           <p class="nav__note">Você vai para o cardápio oficial no Anota.ai.</p>
         </li>
@@ -98,7 +98,7 @@
     </nav>
 
     <a class="btn btn--yellow btn--sm header__cta" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">
-      Pedir agora <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">(abre o cardápio oficial em nova aba)</span>
+      Pedir agora<span class="sr">(abre o cardápio oficial em nova aba)</span>
     </a>
 
     <button class="burger-btn" type="button" aria-expanded="false" aria-controls="menu" data-menu-btn>
@@ -132,14 +132,14 @@
 
       <div class="hero__actions" data-anim="rise" style="--d:.7s">
         <a class="btn btn--yellow btn--lg" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">
-          Escolher meu pedido <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">(abre o cardápio oficial em nova aba)</span>
+          Escolher meu pedido<span class="sr">(abre o cardápio oficial em nova aba)</span>
         </a>
-        <a class="link-arrow" href="#acai">Ver o que tem <svg class="ico" aria-hidden="true"><use href="#i-down"/></svg></a>
+        <a class="link-arrow" href="#acai">Ver o cardápio</a>
       </div>
 
       <ul class="hero__meta" data-anim="rise" style="--d:.85s">
         <li><span class="status" data-status><span class="status__dot"></span><span data-status-text>Todos os dias, 13h30–23h30</span></span></li>
-        <li><svg class="ico" aria-hidden="true"><use href="#i-moto"/></svg> Delivery e presencial</li>
+        <li> Delivery e presencial</li>
       </ul>
     </div>
 
@@ -147,7 +147,7 @@
       <div class="hero__ring">
         <svg viewBox="0 0 200 200">
           <defs><path id="ring-path" d="M100 100 m-84 0 a84 84 0 1 1 168 0 a84 84 0 1 1 -168 0"/></defs>
-          <text><textPath href="#ring-path" textLength="520">AÇAÍ · SORVETES · BURGERS · ELDORADO DO SUL ·</textPath></text>
+          <text><textPath href="#ring-path" textLength="520">AÇAÍ · TRUFADOS · BURGERS · RUA ARGENTINA 196 ·</textPath></text>
         </svg>
       </div>
       <div class="hero__bowl" data-depth="0.6">
@@ -179,8 +179,8 @@
 <!-- ============ FAIXA ============ -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee__track">
-    <span>Açaí</span><i></i><span>Trufados</span><i></i><span>Hambúrgueres</span><i></i><span>Bebidas geladas</span><i></i><span>Combos</span><i></i><span>Delivery</span><i></i>
-    <span>Açaí</span><i></i><span>Trufados</span><i></i><span>Hambúrgueres</span><i></i><span>Bebidas geladas</span><i></i><span>Combos</span><i></i><span>Delivery</span><i></i>
+    <span>Açaí trufado</span><i></i><span>Mega Bacon</span><i></i><span>Trufado de frutas</span><i></i><span>Chicken Crispy</span><i></i><span>Costela Crispy</span><i></i><span>Coca Zero 2 L</span><i></i>
+    <span>Açaí trufado</span><i></i><span>Mega Bacon</span><i></i><span>Trufado de frutas</span><i></i><span>Chicken Crispy</span><i></i><span>Costela Crispy</span><i></i><span>Coca Zero 2 L</span><i></i>
   </div>
 </div>
 
@@ -194,7 +194,7 @@
         <h2 class="ad__title">Açaí<br><em>do seu tamanho.</em></h2>
         <p class="ad__price"><small>a partir de</small> <strong data-price-from="acai-copo">R$ 15,00</strong></p>
         <a class="btn btn--purple btn--lg" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">
-          Quero açaí <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">(abre o cardápio oficial em nova aba)</span>
+          Quero açaí<span class="sr">(abre o cardápio oficial em nova aba)</span>
         </a>
       </div>
       <div class="ad__art" aria-hidden="true">
@@ -210,7 +210,7 @@
         <h2 class="ad__title">Mega<br><em>Bacon.</em></h2>
         <p class="ad__price"><strong data-price="burger-mega-bacon">R$ 28,00</strong></p>
         <a class="btn btn--yellow btn--lg" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">
-          Pedir o Mega Bacon <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">(abre o cardápio oficial em nova aba)</span>
+          Pedir o Mega Bacon<span class="sr">(abre o cardápio oficial em nova aba)</span>
         </a>
       </div>
       <div class="ad__art" aria-hidden="true">
@@ -226,7 +226,7 @@
         <h2 class="ad__title">Burger<br>+ bebida<br>+ <em>açaí.</em></h2>
         <p class="ad__price"><strong data-price="combo-burger-acai">R$ 45,00</strong> <small>com açaí de 300 ml</small></p>
         <a class="btn btn--purple btn--lg" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">
-          Quero o combo <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">(abre o cardápio oficial em nova aba)</span>
+          Quero o combo<span class="sr">(abre o cardápio oficial em nova aba)</span>
         </a>
       </div>
       <div class="ad__art ad__art--trio" aria-hidden="true">
@@ -246,7 +246,7 @@
           <span>2 litros <strong data-price="coca-2l">R$ 15,00</strong></span>
         </p>
         <a class="btn btn--purple btn--lg" href="#bebidas">
-          Ver bebidas <svg class="ico" aria-hidden="true"><use href="#i-down"/></svg>
+          Ver bebidas
         </a>
       </div>
       <div class="ad__art ad__art--drinks" aria-hidden="true">
@@ -275,31 +275,27 @@
 <section class="acai" id="acai" aria-labelledby="acai-title">
   <div class="wrap acai__grid">
     <div class="acai__head">
-      <p class="eyebrow eyebrow--purple" data-reveal>01 — Açaí</p>
+      <p class="eyebrow eyebrow--purple" data-reveal>Açaí · copos de 250 a 500 ml</p>
       <h2 class="display" id="acai-title" data-reveal>
-        Do seu jeito, da primeira à <em>última colherada.</em>
+        Tradicional, trufado ou <em>com frutas.</em>
       </h2>
       <p class="lead" data-reveal>
-        Tradicional, trufado ou com frutas. Escolha o estilo, o tamanho e os cremes, e deixe o resto com a gente.
+        Copos de 250 a 500 ml, a partir de R$ 15. No trufado, o creme que você escolhe vai em volta do copo. No trufado de frutas, os cremes são grátis.
       </p>
     </div>
 
     <figure class="acai__figure" data-reveal>
       <div class="acai__plate">
         <img src="assets/img/acai-bowl.svg" alt="Ilustração de tigela de açaí com granola, banana, morango e calda" width="600" height="600" loading="lazy">
-        <span class="pin p1"><b>Granola</b></span>
-        <span class="pin p2"><b>Banana</b></span>
-        <span class="pin p3"><b>Morango</b></span>
-        <span class="pin p4"><b>Calda</b></span>
       </div>
-      <figcaption>Ilustração. Opções e cremes conforme o cardápio oficial.</figcaption>
+      <figcaption>Ilustração</figcaption>
     </figure>
 
     <div class="sizes">
       <article class="size-card" data-reveal>
-        <p class="size-card__tag">Clássico</p>
+        <p class="size-card__tag">4 tamanhos</p>
         <h3>Açaí tradicional</h3>
-        <p>Açaí no copo, puro e cremoso.</p>
+        <p>O açaí no copo, sem complicação.</p>
         <ul class="size-list">
           <li><span>250 ml</span><b data-price-opt="acai-copo|250 ml">R$ 15,00</b></li>
           <li><span>300 ml</span><b data-price-opt="acai-copo|300 ml">R$ 19,00</b></li>
@@ -308,7 +304,7 @@
         </ul>
       </article>
       <article class="size-card size-card--dark" data-reveal style="--d:.08s">
-        <p class="size-card__tag">Com creme</p>
+        <p class="size-card__tag">Creme em volta do copo</p>
         <h3>Açaí trufado</h3>
         <p>Com o creme que você escolher em volta do copo.</p>
         <ul class="size-list">
@@ -319,7 +315,7 @@
         </ul>
       </article>
       <article class="size-card size-card--fruit" data-reveal style="--d:.16s">
-        <p class="size-card__tag">Cremes grátis</p>
+        <p class="size-card__tag">Até 4 cremes grátis</p>
         <h3>Trufado de frutas</h3>
         <p>Quanto maior o copo, mais cremes grátis.</p>
         <ul class="size-list">
@@ -332,7 +328,7 @@
 
     <div class="acai__cta" data-reveal>
       <a class="btn btn--purple btn--lg" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">
-        Escolher meu açaí <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">(abre o cardápio oficial em nova aba)</span>
+        Escolher meu açaí<span class="sr">(abre o cardápio oficial em nova aba)</span>
       </a>
       <span class="hint">Preços do cardápio oficial</span>
     </div>
@@ -345,12 +341,12 @@
 
   <div class="wrap burgers__grid">
     <div class="burgers__copy">
-      <p class="eyebrow eyebrow--yellow" data-reveal>02 — Hambúrgueres</p>
+      <p class="eyebrow eyebrow--yellow" data-reveal>Hambúrgueres · de R$ 23 a R$ 42</p>
       <h2 class="display display--light" id="burgers-title" data-reveal>
-        Fome de verdade também tem <em>endereço.</em>
+        Costela, cheddar e <em>pão brioche.</em>
       </h2>
       <p class="lead lead--light" data-reveal>
-        Do tradicional ao Mega Bacon 2.0. Pão, carne e queijo, do jeito que a fome pede.
+        Bife bovino, costela artesanal ou frango crocante. Do tradicional de R$ 23 ao Mega Bacon 2.0 com fritas.
       </p>
 
       <ul class="board">
@@ -363,7 +359,7 @@
 
       <div class="burgers__cta" data-reveal>
         <a class="btn btn--yellow btn--lg" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">
-          Ver hambúrgueres <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">(abre o cardápio oficial em nova aba)</span>
+          Ver hambúrgueres<span class="sr">(abre o cardápio oficial em nova aba)</span>
         </a>
       </div>
     </div>
@@ -391,9 +387,9 @@
     </div>
 
     <div class="drinks__copy">
-      <p class="eyebrow eyebrow--purple" data-reveal>03 — Bebidas</p>
-      <h2 class="display" id="drinks-title" data-reveal>Gelada pra <em>acompanhar.</em></h2>
-      <p class="lead" data-reveal>Do latão ao 2 litros, tem bebida pra todo pedido.</p>
+      <p class="eyebrow eyebrow--purple" data-reveal>Bebidas geladas</p>
+      <h2 class="display" id="drinks-title" data-reveal>A mais pedida é a <em>Coca Zero 2 L.</em></h2>
+      <p class="lead" data-reveal>É o item mais pedido da loja no cardápio online. Também tem lata, Monster latão, H2O e água.</p>
 
       <ul class="drink-list" data-reveal>
         <li><span>Coca-Cola Zero 2 L <em class="chip">Mais pedido</em></span><b data-price="coca-zero-2l">R$ 15,00</b></li>
@@ -408,7 +404,7 @@
 
       <div class="drinks__cta" data-reveal>
         <a class="btn btn--purple btn--lg" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">
-          Pedir bebidas <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">(abre o cardápio oficial em nova aba)</span>
+          Pedir bebidas<span class="sr">(abre o cardápio oficial em nova aba)</span>
         </a>
       </div>
     </div>
@@ -419,17 +415,17 @@
 <section class="combos2" id="combos" aria-labelledby="combos-title">
   <div class="wrap">
     <div class="combos2__head">
-      <p class="eyebrow eyebrow--yellow" data-reveal>04 — Combos</p>
-      <h2 class="display display--light" id="combos-title" data-reveal>Quer tudo? <em>Tem combo.</em></h2>
+      <p class="eyebrow eyebrow--yellow" data-reveal>Combos</p>
+      <h2 class="display display--light" id="combos-title" data-reveal>Burger, bebida e açaí <em>por <span data-price="combo-burger-acai">R$ 45,00</span>.</em></h2>
     </div>
 
     <div class="posters">
       <article class="poster poster--main" data-reveal>
-        <p class="poster__tag">O completo</p>
+        <p class="poster__tag">Com açaí de 300 ml</p>
         <h3 class="poster__title">Burger + bebida + açaí 300 ml</h3>
         <p class="poster__desc">Hambúrguer clássico, bebida e um açaí de 300 ml pra fechar.</p>
         <p class="poster__price" data-price="combo-burger-acai">R$ 45,00</p>
-        <a class="btn btn--yellow" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">Quero esse <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">(abre o cardápio oficial em nova aba)</span></a>
+        <a class="btn btn--yellow" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">Pedir o combo com açaí<span class="sr">(abre o cardápio oficial em nova aba)</span></a>
         <div class="poster__art" aria-hidden="true">
           <img class="pa1" src="assets/img/acai-bowl.svg" alt="" width="600" height="600" loading="lazy">
           <img class="pa2" src="assets/img/burger.webp" alt="" width="766" height="587" loading="lazy">
@@ -438,20 +434,20 @@
       </article>
 
       <article class="poster poster--yellow" data-reveal style="--d:.08s">
-        <p class="poster__tag">Clássico</p>
+        <p class="poster__tag">Com fritas e bebida</p>
         <h3 class="poster__title">Hambúrguer tradicional, bebida e fritas</h3>
         <p class="poster__desc">Bife bovino de 150 g e 2 fatias de cheddar, com bebida e fritas.</p>
         <p class="poster__price" data-price="combo-tradicional">R$ 35,00</p>
-        <a class="btn btn--purple" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">Quero esse <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">(abre o cardápio oficial em nova aba)</span></a>
+        <a class="btn btn--purple" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">Pedir o combo com fritas<span class="sr">(abre o cardápio oficial em nova aba)</span></a>
         <img class="poster__img" src="assets/img/burger.webp" alt="" width="766" height="587" loading="lazy">
       </article>
 
       <article class="poster poster--lilac" data-reveal style="--d:.16s">
-        <p class="poster__tag">Fome grande</p>
+        <p class="poster__tag">2 carnes + fritas</p>
         <h3 class="poster__title">Mega Bacon 2.0 com fritas</h3>
         <p class="poster__desc">2 bifes de costela de 120 g, 2 fatias de cheddar e fritas.</p>
         <p class="poster__price" data-price="burger-mega-bacon-2">R$ 42,00</p>
-        <a class="btn btn--purple" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">Quero esse <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">(abre o cardápio oficial em nova aba)</span></a>
+        <a class="btn btn--purple" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">Pedir o Mega Bacon 2.0<span class="sr">(abre o cardápio oficial em nova aba)</span></a>
         <img class="poster__img" src="assets/img/burger.webp" alt="" width="766" height="587" loading="lazy">
       </article>
     </div>
@@ -462,7 +458,7 @@
 <!-- ============ O ESPAÇO ============ -->
 <section class="space" id="espaco" aria-labelledby="space-title">
   <div class="wrap">
-    <p class="eyebrow eyebrow--purple" data-reveal>05 — O espaço</p>
+    <p class="eyebrow eyebrow--purple" data-reveal>Rua Argentina, 196</p>
     <h2 class="space__title" id="space-title" data-reveal>Um espaço grande pra comer um <em>açaizinho.</em></h2>
   </div>
 
@@ -474,29 +470,19 @@
   </figure>
 
   <div class="wrap">
-    <ul class="space__points">
-      <li data-reveal>
-        <span class="space__n">01</span>
-        <h3>Espaço de sobra</h3>
-        <p>Lugar pra sentar, conversar e comer com calma, sem pressa nenhuma.</p>
-      </li>
-      <li data-reveal style="--d:.08s">
-        <span class="space__n">02</span>
-        <h3>Pra ir com a turma</h3>
-        <p>Família, amigos, o time depois do jogo. Cabe todo mundo.</p>
-      </li>
-      <li data-reveal style="--d:.16s">
-        <span class="space__n">03</span>
-        <h3>Aberto até tarde</h3>
-        <p><span data-jm="horario">Todos os dias, das 13h30 às 23h30</span>, na <span data-jm="rua">Rua Argentina, 196</span>.</p>
-      </li>
-    </ul>
+    <p class="space__lead" data-reveal>Puxa uma cadeira. Tem lugar pra sentar com a família e os amigos e tomar o açaí com calma, do jeito que ele merece.</p>
+
+    <dl class="space__facts" data-reveal>
+      <div><dt>Onde</dt><dd><span data-jm="rua">Rua Argentina, 196</span>, Eldorado do Sul</dd></div>
+      <div><dt>Quando</dt><dd data-jm="horario">Todos os dias, das 13h30 às 23h30</dd></div>
+      <div><dt>Como</dt><dd>No salão ou por delivery</dd></div>
+    </dl>
 
     <div class="space__cta" data-reveal>
       <a class="btn btn--purple btn--lg" data-link="maps" href="https://www.google.com/maps/search/?api=1&amp;query=JM+A%C3%A7a%C3%AD%2C+Rua+Argentina+196%2C+Eldorado+do+Sul+RS" target="_blank" rel="noopener">
-        Como chegar <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">(abre o Google Maps em nova aba)</span>
+        Como chegar<span class="sr">(abre o Google Maps em nova aba)</span>
       </a>
-      <a class="link-arrow link-arrow--purple" data-link="instagram" href="https://www.instagram.com/jmacaieldoradodosul/" target="_blank" rel="noopener">Ver no Instagram <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="link-arrow link-arrow--purple" data-link="instagram" href="https://www.instagram.com/jmacaieldoradodosul/" target="_blank" rel="noopener">Ver no Instagram</a>
     </div>
   </div>
 </section>
@@ -504,34 +490,34 @@
 <!-- ============ A JM ============ -->
 <section class="about" id="a-jm" aria-labelledby="about-title">
   <div class="wrap">
-    <p class="eyebrow eyebrow--purple" data-reveal>06 — Visite</p>
+    <p class="eyebrow eyebrow--purple" data-reveal>Endereço e horário</p>
     <h2 class="statement" id="about-title" data-reveal>
-      Açaí, sorvete e hambúrguer na <span class="hl">Rua Argentina, 196</span>, em Eldorado do Sul. Todos os dias.
+      Peça pelo celular ou venha até a <span class="hl">Rua Argentina, 196.</span>
     </h2>
 
     <div class="about__grid">
       <dl class="info">
         <div class="info__row" data-reveal>
-          <dt><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg> Endereço</dt>
+          <dt> Endereço</dt>
           <dd>
             <span data-jm="rua">Rua Argentina, 196</span><br>
             <span data-jm="cidade">Eldorado do Sul — RS</span>, <span data-jm="pais">Brasil</span>
-            <a class="link-arrow link-arrow--sm" data-link="maps" href="https://www.google.com/maps/search/?api=1&amp;query=JM+A%C3%A7a%C3%AD%2C+Rua+Argentina+196%2C+Eldorado+do+Sul+RS" target="_blank" rel="noopener">Abrir no Google Maps <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="link-arrow link-arrow--sm" data-link="maps" href="https://www.google.com/maps/search/?api=1&amp;query=JM+A%C3%A7a%C3%AD%2C+Rua+Argentina+196%2C+Eldorado+do+Sul+RS" target="_blank" rel="noopener">Abrir no Google Maps</a>
           </dd>
         </div>
         <div class="info__row" data-reveal>
-          <dt><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg> Horário</dt>
+          <dt> Horário</dt>
           <dd>
             <span data-jm="horario">Todos os dias, das 13h30 às 23h30</span>
             <span class="status status--dark" data-status><span class="status__dot"></span><span data-status-text>Consulte o horário</span></span>
           </dd>
         </div>
         <div class="info__row" data-reveal>
-          <dt><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Telefone</dt>
+          <dt> Telefone</dt>
           <dd><a class="tel" data-link="tel" href="tel:+555198914468"><span data-jm="telefone">(51) 9891-4468</span></a></dd>
         </div>
         <div class="info__row" data-reveal>
-          <dt><svg class="ico" aria-hidden="true"><use href="#i-moto"/></svg> Atendimento</dt>
+          <dt> Atendimento</dt>
           <dd data-jm="atendimento">Delivery e presencial</dd>
         </div>
       </dl>
@@ -541,18 +527,16 @@
           <iframe data-map title="Mapa: JM Açaí, Rua Argentina, 196, Eldorado do Sul" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
             data-src="https://www.google.com/maps?q=Rua+Argentina,+196,+Eldorado+do+Sul+-+RS&amp;output=embed"></iframe>
           <a class="map__cover" data-link="maps" href="https://www.google.com/maps/search/?api=1&amp;query=JM+A%C3%A7a%C3%AD%2C+Rua+Argentina+196%2C+Eldorado+do+Sul+RS" target="_blank" rel="noopener">
-            <span class="map__pin" aria-hidden="true"><svg class="ico"><use href="#i-pin"/></svg></span>
-            <span>Como chegar <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+                        <span>Como chegar</span>
           </a>
         </div>
 
         <a class="insta" data-link="instagram" href="https://www.instagram.com/jmacaieldoradodosul/" target="_blank" rel="noopener" data-reveal>
           <svg class="insta__ico" aria-hidden="true"><use href="#i-insta"/></svg>
           <span class="insta__txt">
-            <small>Novidades e bastidores</small>
+            <small>Siga a JM no Instagram</small>
             <strong data-jm="instagramHandle">@jmacaieldoradodosul</strong>
           </span>
-          <svg class="ico insta__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
         </a>
       </div>
     </div>
@@ -562,11 +546,11 @@
 <!-- ============ CTA FINAL ============ -->
 <section class="final" aria-labelledby="final-title">
   <div class="wrap final__inner">
-    <h2 class="final__title" id="final-title" data-reveal>Bateu a <em>vontade?</em></h2>
-    <p class="final__text" data-reveal>O cardápio completo, com preços e opções, está a um toque.</p>
+    <h2 class="final__title" id="final-title" data-reveal>Do copo de 250 ml ao <em>Mega Bacon 2.0.</em></h2>
+    <p class="final__text" data-reveal>Todo o cardápio, com preços e opções, no pedido online. Pedido mínimo de R$ 10.</p>
     <div data-reveal>
       <a class="btn btn--yellow btn--xl" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener">
-        Quero meu pedido <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr">(abre o cardápio oficial em nova aba)</span>
+        Ver o cardápio e pedir<span class="sr">(abre o cardápio oficial em nova aba)</span>
       </a>
       <p class="final__note">Pedidos feitos pela plataforma oficial da loja, Anota.ai.</p>
     </div>
@@ -582,7 +566,8 @@
       <a class="brand brand--lg" href="#inicio" aria-label="JM Açaí, voltar ao início">
         <span class="brand__jm">JM</span><span class="brand__acai">açaí</span>
       </a>
-      <p>Açaí, sorvetes e hambúrgueres em Eldorado do Sul.</p>
+      <p>Açaí, trufados e hambúrgueres na Rua Argentina, 196, em Eldorado do Sul.</p>
+      <p class="footer__sign">JM agradece à preferência!</p>
     </div>
 
     <div class="footer__col">
@@ -609,8 +594,7 @@
   <span class="orderbar__info">
     <span class="status status--bar" data-status="curto"><span class="status__dot"></span><span data-status-text>13h30–23h30</span></span>
   </span>
-  <a class="btn btn--yellow orderbar__btn" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener" tabindex="-1">
-    <svg class="ico" aria-hidden="true"><use href="#i-bag"/></svg> Pedir agora<span class="sr">(abre o cardápio oficial em nova aba)</span>
+  <a class="btn btn--yellow orderbar__btn" data-link="pedido" href="https://pedido.anota.ai/loja/jm-acai" target="_blank" rel="noopener" tabindex="-1"> Pedir agora<span class="sr">(abre o cardápio oficial em nova aba)</span>
   </a>
 </div>
 
