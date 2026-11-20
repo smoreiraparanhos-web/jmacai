@@ -15,6 +15,8 @@
  *   disponivel     false mostra "Indisponível"
  *   obsLabel       pergunta do campo de observação (opcional)
  *   obsPlaceholder exemplo dentro do campo (opcional)
+ *   curto, camadas, extras  só hambúrgueres: nome curto e montagem para o desenho da V2
+ *                  (camadas de cima para baixo; tipos em v2/ilustra.js)
  *   grupos         opções:
  *     id, nome, tipo ('unico' | 'multiplo'), min, max,
  *     opcoes [{ nome, preco }]   preco extra em centavos (0 = grátis)
@@ -95,6 +97,15 @@
       /* ---------- Hambúrgueres ---------- */
       {
         id: 'burger-tradicional',
+        curto: 'Tradicional',
+        extras: [],
+        camadas: [
+          { tipo: 'pao-topo', variante: 'tradicional', rotulo: 'Pão tipo tradicional' },
+          { tipo: 'molho', variante: '', rotulo: 'Molho de sua preferência' },
+          { tipo: 'queijo', variante: '', rotulo: 'Queijo' },
+          { tipo: 'bife', variante: '', rotulo: 'Bife bovino · 120 g' },
+          { tipo: 'pao-base', variante: 'tradicional', rotulo: '' }
+        ],
         categoria: 'burgers',
         nome: 'Hambúrguer tradicional',
         descricao: 'Pão tipo tradicional, molho de sua preferência e bife bovino de 120 g, com queijo.',
@@ -105,6 +116,17 @@
       },
       {
         id: 'burger-chicken-crispy',
+        curto: 'Chicken Crispy',
+        extras: [],
+        camadas: [
+          { tipo: 'pao-topo', variante: 'tradicional', rotulo: '' },
+          { tipo: 'molho', variante: '', rotulo: 'Molho à sua escolha' },
+          { tipo: 'cebola', variante: '', rotulo: 'Cebola roxa' },
+          { tipo: 'tomate', variante: '', rotulo: 'Tomate' },
+          { tipo: 'alface', variante: '', rotulo: 'Alface' },
+          { tipo: 'frango', variante: '', rotulo: 'Frango crocante' },
+          { tipo: 'pao-base', variante: 'tradicional', rotulo: '' }
+        ],
         categoria: 'burgers',
         nome: 'Hambúrguer Chicken Crispy',
         descricao: 'Frango crocante, alface, tomate e cebola roxa, com molho à sua escolha.',
@@ -115,6 +137,14 @@
       },
       {
         id: 'burger-costela-crispy',
+        curto: 'Costela Crispy',
+        extras: [],
+        camadas: [
+          { tipo: 'pao-topo', variante: 'brioche', rotulo: 'Pão brioche' },
+          { tipo: 'mucarela', variante: '', rotulo: 'Muçarela empanada crocante' },
+          { tipo: 'costela', variante: '', rotulo: 'Costela artesanal · 120 g' },
+          { tipo: 'pao-base', variante: 'brioche', rotulo: '' }
+        ],
         categoria: 'burgers',
         nome: 'Hambúrguer Costela Crispy',
         descricao: 'Pão brioche, bife de costela artesanal de 120 g e muçarela empanada crocante.',
@@ -125,6 +155,17 @@
       },
       {
         id: 'burger-mega-bacon',
+        curto: 'Mega Bacon',
+        extras: [],
+        camadas: [
+          { tipo: 'pao-topo', variante: 'brioche', rotulo: 'Pão de brioche' },
+          { tipo: 'molho', variante: '', rotulo: 'Molho de seu gosto' },
+          { tipo: 'cheddar', variante: '', rotulo: '2 fatias de cheddar' },
+          { tipo: 'cheddar', variante: '', rotulo: '' },
+          { tipo: 'bacon', variante: '', rotulo: 'Bacon' },
+          { tipo: 'costela', variante: '', rotulo: 'Bife de costela · 120 g' },
+          { tipo: 'pao-base', variante: 'brioche', rotulo: '' }
+        ],
         categoria: 'burgers',
         nome: 'Hambúrguer Mega Bacon',
         descricao: 'Pão de brioche, molho de seu gosto, 1 bife de costela de 120 g e 2 fatias de queijo cheddar.',
@@ -135,6 +176,19 @@
       },
       {
         id: 'burger-mega-bacon-2',
+        curto: 'Mega Bacon 2.0',
+        extras: ['fritas'],
+        camadas: [
+          { tipo: 'pao-topo', variante: 'brioche', rotulo: 'Pão de brioche' },
+          { tipo: 'molho', variante: '', rotulo: '2 molhos de seu gosto' },
+          { tipo: 'cheddar', variante: '', rotulo: '2 fatias de cheddar' },
+          { tipo: 'costela', variante: '', rotulo: 'Bife de costela · 120 g' },
+          { tipo: 'bacon', variante: '', rotulo: 'Bacon' },
+          { tipo: 'cheddar', variante: '', rotulo: '' },
+          { tipo: 'costela', variante: '', rotulo: 'Bife de costela · 120 g' },
+          { tipo: 'molho', variante: '', rotulo: '' },
+          { tipo: 'pao-base', variante: 'brioche', rotulo: '' }
+        ],
         categoria: 'burgers',
         nome: 'Hambúrguer Mega Bacon 2.0 com fritas',
         descricao: 'Pão de brioche, 2 molhos de seu gosto, 2 bifes de costela de 120 g e 2 fatias de queijo cheddar. Com fritas.',
@@ -145,6 +199,16 @@
       },
       {
         id: 'combo-tradicional',
+        curto: 'Combo tradicional',
+        extras: ['fritas', 'bebida'],
+        camadas: [
+          { tipo: 'pao-topo', variante: 'tradicional', rotulo: 'Pão tipo tradicional' },
+          { tipo: 'molho', variante: '', rotulo: 'Molho de sua preferência' },
+          { tipo: 'cheddar', variante: '', rotulo: '2 fatias de cheddar' },
+          { tipo: 'cheddar', variante: '', rotulo: '' },
+          { tipo: 'bife', variante: '', rotulo: 'Bife bovino · 150 g' },
+          { tipo: 'pao-base', variante: 'tradicional', rotulo: '' }
+        ],
         categoria: 'burgers',
         nome: 'Combo hambúrguer tradicional, bebida e fritas',
         descricao: 'Pão tipo tradicional, molho de sua preferência, bife bovino de 150 g e 2 fatias de queijo cheddar. Com bebida e fritas.',
@@ -155,6 +219,15 @@
       },
       {
         id: 'combo-burger-acai',
+        curto: 'Combo com açaí',
+        extras: ['bebida', 'acai'],
+        camadas: [
+          { tipo: 'pao-topo', variante: 'tradicional', rotulo: 'Hambúrguer clássico' },
+          { tipo: 'molho', variante: '', rotulo: '' },
+          { tipo: 'queijo', variante: '', rotulo: '' },
+          { tipo: 'bife', variante: '', rotulo: '' },
+          { tipo: 'pao-base', variante: 'tradicional', rotulo: '' }
+        ],
         categoria: 'burgers',
         nome: 'Combo burger + bebida + açaí',
         descricao: 'Hambúrguer clássico + bebida + açaí 300 ml.',

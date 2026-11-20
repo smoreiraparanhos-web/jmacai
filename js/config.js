@@ -61,6 +61,15 @@ window.JM = {
   },
 
   /*
+   * FOTOS DA V2 (pasta /v2). Coloque as fotos em assets/fotos/ e informe o caminho aqui.
+   * null = usa o desenho/composição atual. Lista do que fotografar: README.
+   */
+  fotos: {
+    acaiTrufado: null,   // ex.: 'assets/fotos/acai-trufado.jpg' (vertical, copo de lado, fundo liso)
+    salao: null          // ex.: 'assets/fotos/salao.jpg' (horizontal, salão com as mesas)
+  },
+
+  /*
    * Seção "Encontre seu próximo favorito".
    * Hoje são sugestões por momento (sem preço, sem produto inventado).
    * Quando houver produtos reais, troque os textos e preencha "preco" (ex.: 'R$ 19,90');

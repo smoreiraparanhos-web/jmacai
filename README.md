@@ -7,6 +7,23 @@ Site da JM Açaí (Eldorado do Sul, RS). HTML, CSS e JavaScript puros, sem build
 
 Escopo completo do e-commerce, com fases seguintes e o que falta para ativar: [`docs/ESCOPO-ECOMMERCE.md`](docs/ESCOPO-ECOMMERCE.md).
 
+## V2 — "ficha técnica" (pasta `v2/`)
+
+Segunda direção visual, publicada ao lado da V1 em `.../jmacai/v2/`. Usa o mesmo `js/config.js` e o mesmo `js/catalogo.js` da raiz.
+
+- **Copo medidor:** escolha tradicional, trufado ou de frutas e o tamanho; o copo enche até a marca e mostra o preço.
+- **Ficha dos burgers:** cada hambúrguer é desenhado camada por camada a partir de `camadas` no `catalogo.js`. Tocar numa linha da tabela troca o desenho, a ficha e o preço.
+- **Prateleira de bebidas:** lado a lado, em escala aproximada, sem logos de marca.
+- **Fotos:** quando houver, coloque em `assets/fotos/` e preencha `fotos` no `config.js` (copo de açaí e salão). Sem foto, a página usa os desenhos.
+
+**Fotos para pedir à loja (celular, luz de janela, fundo liso):**
+1. Açaí trufado de lado, mostrando o creme em volta do copo (vertical).
+2. Os 4 tamanhos de copo lado a lado.
+3. Mega Bacon cortado ao meio (horizontal).
+4. Combo burger + bebida + açaí na mesa.
+5. Salão com as mesas (horizontal).
+6. Fachada e letreiro.
+
 ## Rodar localmente
 
 ```bash
