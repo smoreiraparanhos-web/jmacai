@@ -14,27 +14,31 @@ import json, os, html
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CRED = json.load(open(os.path.join(RAIZ, 'assets/fotos/creditos.json'), encoding='utf-8')) \
     if os.path.exists(os.path.join(RAIZ, 'assets/fotos/creditos.json')) else {}
+# foto que já está no projeto: hambúrguer recortado (domínio público)
+CRED.setdefault('burger-recorte', {'src': 'assets/img/burger.webp', 'recorte': True, 'w': 766, 'h': 587,
+    'autor': 'Renee Comet / National Cancer Institute', 'licenca': 'Domínio público',
+    'pagina': 'https://commons.wikimedia.org/wiki/File:Cheeseburger.jpg'})
 
 # ---- qual foto vai em cada lugar (nomes de assets/fotos/creditos.json)
 FOTO = {
     'inicio': 'acai-0',
     'porta-acai': 'acai-1',
-    'porta-burger': 'burger-0',
-    'porta-combo': 'burger-2',
+    'porta-burger': 'burger-recorte',
+    'porta-combo': 'sem-foto',
     'bebidas-destaque': 'coca-0',
     'acai-hero': 'acai-4',
     'acai-tradicional': 'acai-3',
     'acai-trufado': 'acai-1',
     'acai-frutas': 'acai-2',
-    'burgers-hero': 'burger-1',
-    'burgers-destaque': 'burger-0',
+    'burgers-hero': 'burger-recorte',
+    'burgers-destaque': 'sem-foto',
     'bebidas-hero': 'coca-0',
     'bebidas-2': 'guarana-0',
     'bebidas-3': 'monster-0',
-    'combos-hero': 'burger-3',
-    'combo-acai': 'burger-2',
-    'combo-fritas': 'burger-3',
-    'combo-2': 'burger-0',
+    'combos-hero': 'burger-recorte',
+    'combo-acai': 'burger-recorte',
+    'combo-fritas': 'sem-foto',
+    'combo-2': 'sem-foto',
     'espaco-hero': 'acai-2',
 }
 PEDIDO = 'https://pedido.anota.ai/loja/jm-acai'
@@ -49,10 +53,13 @@ def foto(lugar, alt, extra='', eager=False):
     nome = FOTO.get(lugar)
     c = CRED.get(nome)
     if not c:
-        return '<div class="ph %s" aria-hidden="true"></div>' % extra
+        return ''
     if nome not in usadas:
         usadas.append(nome)
     load = 'fetchpriority="high"' if eager else 'loading="lazy"'
+    if c.get('recorte'):
+        return ('<div class="ph ph--cutout %s"><img src="%s" alt="%s" width="%d" height="%d" %s decoding="async">'
+                '<span class="ph__credit">Foto ilustrativa</span></div>') % (extra, c['src'], html.escape(alt), c['w'], c['h'], load)
     return ('<div class="ph %s"><img src="assets/fotos/%s-1600.webp" srcset="assets/fotos/%s-800.webp 800w, assets/fotos/%s-1600.webp 1600w" '
             'sizes="(min-width: 768px) 60vw, 100vw" alt="%s" width="%d" height="%d" %s decoding="async">'
             '<span class="ph__credit">Foto ilustrativa</span></div>') % (extra, nome, nome, nome, html.escape(alt), c['w'], c['h'], load)
@@ -97,7 +104,7 @@ def pagina(arq, titulo, desc, corpo):
 <script src="js/catalogo.js" defer></script>
 <script src="js/main.js" defer></script>
 </head>
-<body class="pg">
+<body class="pg%(bodycls)s">
 <!-- Gerado por ferramentas/gerar_paginas.py. Edite o script, não este arquivo. -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></symbol></svg>
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -155,13 +162,15 @@ def pagina(arq, titulo, desc, corpo):
 </html>
 ''' % {'titulo': titulo, 'desc': desc, 'nav': nav,
        'btnmenu': btn('Fazer pedido', 'btn--yellow btn--block'), 'btnhead': btn('Pedir agora', 'btn--yellow btn--sm header__cta'),
-       'corpo': corpo, 'cred': (': ' + creditos + '.') if creditos else '.', 'pedido': PEDIDO, 'sr': SR_EXT}
+       'corpo': corpo, 'bodycls': ' pg--solid' if ('pg-hero--amarelo' in corpo or 'pg-hero--lilas' in corpo) else '', 'cred': (': ' + creditos + '.') if creditos else '.', 'pedido': PEDIDO, 'sr': SR_EXT}
 
 def status_meta():
     return '<p class="pg-hero__meta"><span class="status" data-status><span class="status__dot"></span><span data-status-text>Todos os dias, 13h30–23h30</span></span><span>Rua Argentina, 196 · Eldorado do Sul</span></p>'
 
-def hero(lugar, alt, eyebrow, h1, sub, acoes, curto=False):
-    return '''<section class="pg-hero%s">
+def hero(lugar, alt, eyebrow, h1, sub, acoes, curto=False, tema='roxo'):
+    f = foto(lugar, alt, eager=True)
+    modo = ' pg-hero--plain pg-hero--%s' % tema if not f else (' pg-hero--cutout' if 'ph--cutout' in f else '')
+    return '''<section class="pg-hero%s%s">
   %s
   <div class="wrap pg-hero__inner">
     <p class="eyebrow">%s</p>
@@ -170,21 +179,28 @@ def hero(lugar, alt, eyebrow, h1, sub, acoes, curto=False):
     <div class="pg-hero__actions">%s</div>
     %s
   </div>
-</section>''' % (' pg-hero--short' if curto else '', foto(lugar, alt, eager=True), eyebrow, h1, sub, acoes, status_meta())
+</section>''' % (' pg-hero--short' if curto else '', modo, f, eyebrow, h1, sub, acoes, status_meta())
 
 PAGINAS = {}
+
+def porta(lugar, alt):
+    f = foto(lugar, alt)
+    return (' door--plain' if not f else (' door--cutout' if 'ph--cutout' in f else '')), f
+
+def split_foto(lugar, alt, extra=''):
+    return foto(lugar, alt, extra)
 
 # ------------------------------------------------------------ INÍCIO
 def p_inicio():
     return hero('inicio', 'Açaí servido com frutas', 'Rua Argentina, 196 · Eldorado do Sul', 'O açaí da Rua Argentina.',
                 'Tradicional, trufado ou de frutas, de 250 a 500 ml. Hambúrguer de costela e bebida gelada. Todos os dias até 23h30.',
-                btn('Pedir agora') + '<a class="link-arrow" href="acai.html" style="color:#fff">Ver o cardápio</a>') + '''
+                btn('Pedir agora') + '<a class="link-arrow" href="acai.html" style="color:#fff">Ver o cardápio</a>', tema='roxo') + '''
 <section class="blk">
   <div class="wrap">
     <div class="doors">
-      <a class="door" href="acai.html">%s<div><h2>Açaí</h2><p>Tradicional, trufado e de frutas · a partir de <b data-price-from="acai-copo">R$ 15,00</b></p><span class="door__go">Ver tamanhos</span></div></a>
-      <a class="door" href="burgers.html">%s<div><h2>Burgers</h2><p>Do tradicional ao Mega Bacon 2.0 · a partir de <b data-price="burger-tradicional">R$ 23,00</b></p><span class="door__go">Ver burgers</span></div></a>
-      <a class="door" href="combos.html">%s<div><h2>Combos</h2><p>Burger + bebida + açaí 300 ml · <b data-price="combo-burger-acai">R$ 45,00</b></p><span class="door__go">Ver combos</span></div></a>
+      <a class="door door--acai%s" href="acai.html">%s<div><h2>Açaí</h2><p>Tradicional, trufado e de frutas · a partir de <b data-price-from="acai-copo">R$ 15,00</b></p><span class="door__go">Ver tamanhos</span></div></a>
+      <a class="door door--burger%s" href="burgers.html">%s<div><h2>Burgers</h2><p>Do tradicional ao Mega Bacon 2.0 · a partir de <b data-price="burger-tradicional">R$ 23,00</b></p><span class="door__go">Ver burgers</span></div></a>
+      <a class="door door--combo%s" href="combos.html">%s<div><h2>Combos</h2><p>Burger + bebida + açaí 300 ml · <b data-price="combo-burger-acai">R$ 45,00</b></p><span class="door__go">Ver combos</span></div></a>
     </div>
   </div>
 </section>
@@ -221,8 +237,8 @@ def p_inicio():
     <p class="final__text">Todo o cardápio, com preços e opções, no pedido online. Pedido mínimo de R$ 10.</p>
     <div>%s<p class="final__note">Pedidos feitos pela plataforma oficial da loja, Anota.ai.</p></div>
   </div>
-</section>''' % (foto('porta-acai', 'Açaí com frutas'), foto('porta-burger', 'Hambúrguer com cheddar'), foto('porta-combo', 'Hambúrguer com fritas'),
-                 MAPS, foto('bebidas-destaque', 'Refrigerante gelado'), btn('Ver o cardápio e pedir', 'btn--yellow btn--xl'))
+</section>''' % (porta('porta-acai', 'Açaí com frutas') + porta('porta-burger', 'Hambúrguer com cheddar') + porta('porta-combo', 'Hambúrguer com fritas') + (
+                 MAPS, split_foto('bebidas-destaque', 'Refrigerante gelado'), btn('Ver o cardápio e pedir', 'btn--yellow btn--xl')))
 
 # ------------------------------------------------------------ AÇAÍ
 def p_acai():
@@ -265,7 +281,7 @@ def p_burgers():
     %s
   </div>
 </section>
-%s''' % (plist(itens), btn('Ver hambúrgueres'), foto('burgers-destaque', 'Hambúrguer de perto', 'ph--wide'),
+%s''' % (plist(itens), btn('Ver hambúrgueres'), split_foto('burgers-destaque', 'Hambúrguer de perto', 'ph--wide'),
          proxima('bebidas.html', 'Bebidas', ('acai.html', 'Açaí')))
 
 # ------------------------------------------------------------ BEBIDAS
@@ -276,7 +292,7 @@ def p_bebidas():
              ('Monster latão', 'data-price="monster"', 'R$ 10,00'), ('H2O', 'data-price="h2o"', 'R$ 8,00'),
              ('Água com gás', 'data-price="agua-gas"', 'R$ 3,00'), ('Água sem gás', 'data-price="agua"', 'R$ 3,00')]
     return hero('bebidas-hero', 'Refrigerante gelado', 'Bebidas geladas', 'Bebidas.',
-                'A mais pedida da loja é a Coca Zero 2 L. Do latão ao 2 litros, pra acompanhar o pedido.', btn('Pedir bebidas'), curto=True) + '''
+                'A mais pedida da loja é a Coca Zero 2 L. Do latão ao 2 litros, pra acompanhar o pedido.', btn('Pedir bebidas', 'btn--purple btn--lg'), curto=True, tema='amarelo') + '''
 <section class="blk">
   <div class="wrap split split--rev">
     %s
@@ -286,7 +302,7 @@ def p_bebidas():
     </div>
   </div>
 </section>
-%s''' % (foto('bebidas-2', 'Lata de refrigerante', 'ph--wide'), plist(itens), proxima('combos.html', 'Combos', ('burgers.html', 'Burgers')))
+%s''' % (split_foto('bebidas-2', 'Lata de refrigerante', 'ph--wide'), plist(itens), proxima('combos.html', 'Combos', ('burgers.html', 'Burgers')))
 
 # ------------------------------------------------------------ COMBOS
 def p_combos():
@@ -309,7 +325,7 @@ def p_combos():
 # ------------------------------------------------------------ ESPAÇO
 def p_espaco():
     return hero('espaco-hero', 'Açaí servido na mesa', 'Rua Argentina, 196', 'Um espaço grande pra comer um açaizinho.',
-                'Mesas pra sentar com a família e os amigos e comer com calma. Ou peça e receba em casa.',
+                'Mesas pra sentar com a família e os amigos e comer com calma. Ou peça e receba em casa.', tema='lilas', acoes=
                 '<a class="btn btn--yellow btn--lg" data-link="maps" href="%s" target="_blank" rel="noopener">Como chegar<span class="sr"> (abre o Google Maps em nova aba)</span></a>' % MAPS) + '''
 <section class="blk">
   <div class="wrap split">

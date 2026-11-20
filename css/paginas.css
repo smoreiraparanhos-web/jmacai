@@ -153,3 +153,76 @@ body.pg { background: var(--creme); }
   .nav__link[aria-current="page"] { color: var(--creme); }
   .nav__link[aria-current="page"]::after { transform: scaleX(1); }
 }
+
+/* ==========================================================
+   Sem foto: blocos de cor da marca · Foto recortada: produto sobre fundo
+   ========================================================== */
+.ph--cutout { background: transparent; }
+.ph--cutout img { object-fit: contain; padding: 6%; filter: drop-shadow(0 30px 40px rgba(0, 0, 0, .45)); }
+.ph--cutout .ph__credit { color: rgba(255, 255, 255, .55); text-shadow: none; }
+
+/* hero sem foto */
+.pg-hero--plain { min-height: 62svh; }
+.pg-hero--plain::after { display: none; }
+.pg-hero--plain::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(60% 70% at 85% 20%, rgba(123, 63, 176, .55), transparent 70%);
+}
+.pg-hero--roxo { background: var(--roxo-800); }
+.pg-hero--amarelo { background: var(--amarelo); color: var(--roxo-800); }
+.pg-hero--amarelo::before { background: radial-gradient(50% 70% at 85% 20%, rgba(255, 255, 255, .5), transparent 70%); }
+.pg-hero--amarelo .eyebrow { color: var(--roxo-700); }
+.pg-hero--amarelo h1 { text-shadow: none; }
+.pg-hero--amarelo .pg-hero__sub, .pg-hero--amarelo .pg-hero__meta { color: #4A3A12; }
+.pg-hero--lilas { background: var(--lilas-100); color: var(--roxo-800); }
+.pg-hero--lilas::before { background: radial-gradient(50% 70% at 85% 20%, var(--lilas), transparent 70%); }
+.pg-hero--lilas .eyebrow { color: var(--roxo-700); }
+.pg-hero--lilas h1 { text-shadow: none; }
+.pg-hero--lilas .pg-hero__sub, .pg-hero--lilas .pg-hero__meta { color: var(--tinta-2); }
+
+/* hero com foto recortada */
+.pg-hero--cutout { background: #120818; flex-direction: column; align-items: stretch; justify-content: flex-end; }
+.pg-hero--cutout::after { display: none; }
+.pg-hero--cutout::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(50% 60% at 70% 45%, rgba(248, 217, 0, .22), transparent 70%); }
+.pg-hero--cutout .ph { position: relative; inset: auto; z-index: 0; width: 100%; height: 52vw; max-height: 380px; margin-bottom: 8px; }
+.pg-hero--cutout .ph img { animation: slowzoom 9s ease-out both; }
+
+/* portas */
+.door--plain::after { display: none; }
+.door--acai.door--plain { background: radial-gradient(90% 70% at 80% 10%, var(--roxo-500), var(--roxo-800) 70%); }
+.door--combo.door--plain, .door--combo { background: var(--amarelo); color: var(--roxo-800); }
+.door--combo p { color: #4A3A12; }
+.door--combo b { color: var(--roxo-700); }
+.door--combo .door__go { border-color: var(--roxo-800); }
+.door--cutout { background: #120818; }
+.door--cutout .ph { inset: 0 0 35% 0; }
+.door--combo.door--cutout { background: var(--amarelo); }
+.door--combo.door--cutout::after { background: linear-gradient(180deg, transparent 45%, rgba(248, 217, 0, .95) 70%); }
+.door--combo.door--cutout .ph__credit { color: rgba(36, 16, 56, .6); }
+
+/* split sem foto: texto ocupa a largura */
+.split > :only-child { grid-column: 1 / -1; max-width: 760px; }
+
+/* pôster com recorte */
+.deal .ph--cutout { background: rgba(0, 0, 0, .15); }
+.deal--yellow .ph--cutout { background: rgba(255, 255, 255, .35); }
+.deal--yellow .ph--cutout .ph__credit { color: rgba(36, 16, 56, .6); }
+
+@media (min-width: 768px) {
+  .pg-hero--cutout { flex-direction: row; align-items: flex-end; }
+  .pg-hero--cutout .ph { position: absolute; inset: var(--header-h) 0 0 auto; width: 54%; height: auto; max-height: none; margin: 0; }
+  .pg-hero--cutout .pg-hero__inner > * { max-width: 46%; }
+}
+
+/* topo claro: cabeçalho sempre sólido para o menu aparecer */
+.pg--solid .header::before { opacity: 1; }
+.pg-hero--amarelo p.pg-hero__sub, .pg-hero--amarelo .pg-hero__meta { color: #4A3A12; }
+.pg-hero--lilas p.pg-hero__sub, .pg-hero--lilas .pg-hero__meta { color: var(--tinta-2); }
+
+/* card do açaí sem foto: os tamanhos viram o desenho */
+.door--acai.door--plain::before {
+  content: "250\A 300\A 400\A 500 ml"; white-space: pre; position: absolute; right: 22px; top: 18px; z-index: -1;
+  font-size: clamp(3.4rem, 9vw, 6.4rem); font-weight: 800; line-height: .9; letter-spacing: -.04em; text-align: right;
+  color: transparent; -webkit-text-stroke: 1.5px rgba(215, 168, 255, .45);
+}
+.deal > .deal__body:only-child { grid-column: 1 / -1; padding: 40px 30px; }
